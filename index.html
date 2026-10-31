@@ -9,7 +9,7 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="icon" type="image/png" href="icon-192.png">
 
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <style>
 :root{--bg:#f6f7f5;--card:#fff;--fill:#eceeea;--line:#e1e5df;--tx:#17201c;--mut:#78837c;--ac:#0f9d7a;--on:#fff;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -63,13 +63,13 @@ svg .ln{stroke:var(--mut);fill:none}svg .d{fill:var(--ac)}svg text{fill:var(--mu
 .name{font-size:44px;font-weight:300;text-align:center;line-height:1.1}
 .fv{position:relative;background:var(--fill);border-radius:16px;padding:8px;text-align:center;cursor:pointer}.fv small{display:block}
 .fv .x{position:absolute;right:6px;top:2px;padding:4px 8px;color:var(--mut)}
-body{font-size:var(--fs,16px)}.sw{width:40px;height:40px;min-height:40px;border-radius:50%;padding:0;flex:none}svg .o{fill:var(--fill);stroke:var(--ac)}.sec{margin:16px 0 6px;font-size:13px;color:var(--mut)}body{padding-bottom:28px}nav{position:sticky;top:env(safe-area-inset-top,0px);bottom:auto;left:auto;right:auto;z-index:20;border-top:0;border-bottom:1px solid var(--line);margin:0 -16px 14px;padding:0 8px}nav button{min-height:50px}nav button.on{box-shadow:inset 0 -2px 0 var(--ac)}body::before{content:'';position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:19}</style></head><body>
-<header><h1>THAWNG LING MUSIC</h1><div style="display:flex;gap:8px;align-items:center"><button id="abt" style="width:auto;padding:0 14px;border-radius:18px;font-size:13px">Portfolio</button><button id="theme" aria-label="Switch theme">◐</button></div></header>
+body{font-size:var(--fs,16px)}.sw{width:40px;height:40px;min-height:40px;border-radius:50%;padding:0;flex:none}svg .o{fill:var(--fill);stroke:var(--ac)}.sec{margin:16px 0 6px;font-size:13px;color:var(--mut)}body{padding-bottom:28px}nav{position:sticky;top:env(safe-area-inset-top,0px);bottom:auto;left:auto;right:auto;z-index:20;border-top:0;border-bottom:1px solid var(--line);margin:0 -16px 14px;padding:0 8px}nav button{min-height:50px}nav button.on{box-shadow:inset 0 -2px 0 var(--ac)}body::before{content:'';position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:19}*{touch-action:manipulation}input,select,textarea{font-size:16px}button,nav,.item,.v,.fv,header{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}#bpm{font-size:64px;font-weight:300}header h1{display:flex;align-items:center;gap:10px}.logo{width:30px;height:30px;border-radius:50%;display:block}</style></head><body>
+<header><h1><img class="logo" src="icon-192.png" alt="">THAWNG LING MUSIC</h1><div style="display:flex;gap:8px;align-items:center"><button id="abt" style="width:auto;padding:0 14px;border-radius:18px;font-size:13px">Portfolio</button><button id="theme" aria-label="Switch theme">◐</button></div></header>
 <nav><button class="on" data-v="me">Metronome</button><button data-v="tn">Tuner</button><button data-v="cd">Chords</button><button data-v="sl">Setlist</button><button data-v="mo">More</button></nav>
 
 <section id="ab" hidden>
  <div class="card c">
-  <div style="width:84px;height:84px;border-radius:50%;background:var(--ac);color:var(--on);display:flex;align-items:center;justify-content:center;font-size:30px;font-weight:300;margin:4px auto 14px">TL</div>
+  <img src="icon-192.png" alt="Thawng Ling Music" style="width:96px;height:96px;border-radius:50%;display:block;margin:4px auto 14px">
   <div class="name" style="font-size:30px">Thawng Ling</div>
   <div class="mut" style="margin-top:4px">Music Producer · Guitarist</div>
   <div class="mut" style="font-size:13px">Currently Guitarist in the band Root</div>
@@ -105,6 +105,7 @@ body{font-size:var(--fs,16px)}.sw{width:40px;height:40px;min-height:40px;border-
   </div>
   <label>Volume</label><input type="range" id="vol" min="0" max="100" value="80">
   <button id="tap" class="big" style="margin-top:10px">Tap tempo</button>
+  <label>Speed trainer: raise the tempo every few bars until the max</label><div class='row2'><input type='number' id='trs' value='5' min='1' max='50'><input type='number' id='trn' value='4' min='1' max='32'><input type='number' id='trm' value='160' min='40' max='300'></div><div class='row2'><small class='c'>+BPM</small><small class='c'>every bars</small><small class='c'>max BPM</small></div><button id='tro' class='big' style='margin-top:10px'>Speed trainer: Off</button>
   <p class="mut" style="font-size:13px;margin:12px 0 0">In 6/8 the tempo counts the dotted quarter note.</p>
  </div>
 </section>
@@ -146,7 +147,7 @@ body{font-size:var(--fs,16px)}.sw{width:40px;height:40px;min-height:40px;border-
 <section id='mo' hidden><div class='card' id='mol'></div></section>
 <section id='sc' hidden><div class='card'><div class='row2'><select id='sroot'></select><select id='sscale'></select></div><div style='overflow-x:auto;margin-top:14px'><div id='sboard' style='min-width:560px'></div></div><div class='c mut' id='snotes' style='margin:10px 0'></div><button class='pri big' id='splay'>Play scale</button></div></section>
 <section id='rc' hidden><div class='card c'><div class='num' id='rt' style='font-size:64px'>00:00</div><button class='pri big' id='rgo' style='margin-top:14px'>Record</button><p class='mut' id='rh' style='font-size:13px;margin:10px 0 0'>Records from your microphone and saves on this phone.</p></div><div class='card' id='rl'></div></section>
-<section id='se' hidden><div class='card'><div class='sec' style='margin-top:0'>Theme</div><div class='row2' id='sth'></div><div class='sec'>Accent color</div><div class='row2' id='sac' style='flex-wrap:wrap'></div><div class='sec'>Text size</div><div class='row2' id='sfs'></div></div><div class='card'><div class='sec' style='margin-top:0'>Metronome click sound</div><div class='row2' id='ssn'></div><div class='sec'>Keep screen awake (metronome, drums, stage)</div><div class='row2' id='swk'></div><div class='sec'>Daily practice goal (minutes)</div><input type='number' id='sgl' min='1'></div><div class='card'><div class='sec' style='margin-top:0'>Portfolio links</div><div id='plist'></div><div class='row2' style='margin-top:8px'><input type='text' id='ln' placeholder='Name (Facebook)'><input type='text' id='lu' placeholder='https://...'></div><button id='ladd' style='margin-top:8px;width:100%'>Add link</button></div><div class='card'><div class='sec' style='margin-top:0'>Backup and restore</div><textarea id='btx' style='min-height:90px' placeholder='Backup text appears here. To restore, paste a backup here.'></textarea><div class='row2' style='margin-top:8px'><button class='pri' id='bcopy'>Copy backup</button><button id='brest'>Restore</button></div><p class='mut' id='bmsg' style='font-size:13px;margin:10px 0 0'>Covers songs, chords, practice log, settings and links. Recordings stay on this phone and aren’t included.</p></div><button id='rst' class='big'>Reset all data</button></section>
+<section id='se' hidden><div class='card'><div class='sec' style='margin-top:0'>Theme</div><div class='row2' id='sth'></div><div class='sec'>Accent color</div><div class='row2' id='sac' style='flex-wrap:wrap'></div><div class='sec'>Text size</div><div class='row2' id='sfs'></div></div><div class='card'><div class='sec' style='margin-top:0'>Metronome click sound</div><div class='row2' id='ssn'></div><div class='sec'>Keep screen awake (metronome, drums, stage)</div><div class='row2' id='swk'></div><div class='sec'>Daily practice goal (minutes)</div><input type='number' id='sgl' min='1'></div><div class='card'><div class='sec' style='margin-top:0'>Backup and restore</div><textarea id='btx' style='min-height:90px' placeholder='Backup text appears here. To restore, paste a backup here.'></textarea><div class='row2' style='margin-top:8px'><button class='pri' id='bcopy'>Copy backup</button><button id='brest'>Restore</button></div><p class='mut' id='bmsg' style='font-size:13px;margin:10px 0 0'>Covers songs, chords, practice log, settings and links. Recordings stay on this phone and aren’t included.</p></div><button id='rst' class='big'>Reset all data</button></section>
 <section id="sl" hidden>
  <div id="list" class="card"></div>
  <button class="pri big" id="add">Add song</button>
@@ -205,7 +206,7 @@ $('#bs').oninput=e=>setBpm(+e.target.value);
 $$('[data-d]').forEach(b=>b.onclick=()=>setBpm(bpm+ +b.dataset.d));
 function click(t,lvl){const a=AC,o=a.createOscillator(),g=a.createGain();o.type=['sine','square','triangle'][S.snd||0];o.frequency.value=lvl==2?1500:lvl==1?1000:700;const p=Math.max(vol*(lvl==0?.5:1),.001);g.gain.setValueAtTime(p,t);g.gain.exponentialRampToValueAtTime(.001,t+.05);o.connect(g);g.connect(a.destination);o.start(t);o.stop(t+.06)}
 function flash(b,s){if(!on)return;const i=comp?b*subs+s:(s?-1:b);if(i<0)return;$$('#dots i').forEach((d,k)=>d.classList.toggle('on',k===i))}
-function sched(){while(nextT<AC.currentTime+.12){const lvl=sb?0:(bt?1:2),b=bt,s=sb;click(nextT,lvl);setTimeout(()=>flash(b,s),Math.max(0,(nextT-AC.currentTime)*1000));nextT+=60/bpm/subs;sb++;if(sb>=subs){sb=0;bt=(bt+1)%beats}}}
+function sched(){while(nextT<AC.currentTime+.12){const lvl=sb?0:(bt?1:2),b=bt,s=sb;click(nextT,lvl);setTimeout(()=>flash(b,s),Math.max(0,(nextT-AC.currentTime)*1000));nextT+=60/bpm/subs;sb++;if(sb>=subs){sb=0;bt=(bt+1)%beats;if(!bt)bar()}}}
 function toggleM(){if(on){on=false;clearInterval(tm);$('#go').textContent='Start';dots();return}
  wake();ctx();on=true;bt=0;sb=0;nextT=AC.currentTime+.06;sched();tm=setInterval(sched,25);$('#go').textContent='Stop'}
 $('#go').onclick=toggleM;
@@ -257,7 +258,7 @@ const pcsOf=()=>cs.custom?[...cs.custom]:[...new Set(Q[cs.q][2].map(i=>(cs.root+
 function solve(pcs,root,tun){const n=tun.length,need=Math.min(3,n),out=[],seen={};
  for(const tier of [pcs,pcs.filter(p=>p!==(root+7)%12)]){if(out.length)break;
   for(let p=1;p<=9;p++){const fr=new Array(n).fill(-1),opts=p===1?[0,1,2,3,4]:[p,p+1,p+2,p+3];
-   const test=()=>{const pl=[];fr.forEach((f,i)=>{if(f>=0)pl.push(tun[i]+f)});const set=new Set(pl.map(x=>x%12));if(!tier.every(t=>set.has(t)))return;
+   const test=()=>{const pl=[];fr.forEach((f,i)=>{if(f>=0)pl.push(tun[i]+f)});if(!pl.every(x=>pcs.includes(x%12)))return;const set=new Set(pl.map(x=>x%12));if(!tier.every(t=>set.has(t)))return;
     const key=fr.join();if(seen[key])return;seen[key]=1;const pr=fr.filter(f=>f>0),mn=pr.length?Math.min(...pr):0;let fg=0;
     if(pr.length){const idx=[];fr.forEach((f,i)=>{if(f===mn)idx.push(i)});const hi=pr.filter(f=>f>mn).length;
      if(idx.length>=2){const blocked=fr.some((f,i)=>f===0&&i>idx[0]&&i<idx[idx.length-1]);fg=hi+(blocked?idx.length:1)}else fg=hi+1}
@@ -302,10 +303,10 @@ ctun();rChord();rFavs();
 
 /* Setlist */
 let songs=ld('songs',[]),cur=null;
-function rList(){$('#list').innerHTML=songs.length?songs.map(s=>`<div class="item" data-id="${s.id}"><div><b>${esc(s.t||'Untitled')}</b><small>${esc(s.k||'')}${s.k&&s.b?' · ':''}${s.b?s.b+' BPM':''}</small></div><span class="mut">›</span></div>`).join(''):'<p class="mut c" style="margin:0">No songs yet. Tap “Add song” to start your setlist.</p>'}
+function rList(){$('#list').innerHTML=songs.length?songs.map(s=>`<div class="item" data-id="${s.id}"><div><b>${esc(s.t||'Untitled')}</b><small>${esc(s.k||'')}${s.k&&s.b?' · ':''}${s.b?s.b+' BPM':''}</small></div><span style='display:flex;gap:4px'><button data-mv='-1' style='min-height:38px;padding:0 12px'>▲</button><button data-mv='1' style='min-height:38px;padding:0 12px'>▼</button></span></div>`).join(''):'<p class="mut c" style="margin:0">No songs yet. Tap “Add song” to start your setlist.</p>'}
 function openEd(s){cur=s;$('#st').value=s.t||'';$('#sk').value=s.k||'';$('#sb').value=s.b||'';$('#sy').value=s.l||'';$('#ed').hidden=false;$('#ed').scrollIntoView({behavior:'smooth'})}
 $('#add').onclick=()=>openEd({id:Date.now(),t:'',k:'',b:'',l:'',isNew:true});
-$('#list').onclick=e=>{const r=e.target.closest('.item');if(r)openEd(songs.find(s=>s.id==r.dataset.id))};
+$('#list').onclick=e=>{const r=e.target.closest('.item');if(!r)return;const m=e.target.dataset.mv;if(m){const i=songs.findIndex(s=>s.id==r.dataset.id),j=i+ +m;if(j>=0&&j<songs.length){[songs[i],songs[j]]=[songs[j],songs[i]];sv('songs',songs);rList()}return}openEd(songs.find(s=>s.id==r.dataset.id))};
 $('#ssave').onclick=()=>{cur.t=$('#st').value.trim()||'Untitled';cur.k=$('#sk').value.trim();cur.b=+$('#sb').value||'';cur.l=$('#sy').value;if(cur.isNew){delete cur.isNew;songs.push(cur)}sv('songs',songs);rList();$('#ed').hidden=true};
 $('#sdel').onclick=()=>{songs=songs.filter(s=>s.id!==cur.id);sv('songs',songs);rList();$('#ed').hidden=true};
 $('#sclose').onclick=()=>$('#ed').hidden=true;
@@ -317,7 +318,7 @@ let logs=ld('logs',[]),t0=0,tick;
 const fmt=s=>String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0');
 function addLog(sec){logs.unshift({id:Date.now(),d:new Date().toISOString(),s:sec,n:$('#pn').value.trim()});sv('logs',logs);rLogs()}
 function rLogs(){const wk=Date.now()-7*864e5,w=logs.filter(l=>new Date(l.d)>=wk).reduce((a,l)=>a+l.s,0),t=logs.reduce((a,l)=>a+l.s,0);
- $('#sum').innerHTML=`<b style="font-size:28px;font-weight:300">${Math.round(w/60)} min</b> this week<br><small>${Math.round(t/60)} min in total</small><br><small>${gs()}</small>`;
+ $('#sum').innerHTML=`<b style="font-size:28px;font-weight:300">${Math.round(w/60)} min</b> this week<br><small>${Math.round(t/60)} min in total</small><br><small>${gs()}</small>${wk7()}`;
  $('#logs').innerHTML=logs.length?logs.map(l=>`<div class="item"><div><b>${Math.max(1,Math.round(l.s/60))} min</b> ${esc(l.n||'Practice')}<small>${new Date(l.d).toLocaleDateString(undefined,{month:'short',day:'numeric'})}</small></div><button data-id="${l.id}">Delete</button></div>`).join(''):'<p class="mut c" style="margin:0">Your practice sessions will show up here.</p>'}
 $('#logs').onclick=e=>{const id=e.target.dataset.id;if(id){logs=logs.filter(l=>l.id!=id);sv('logs',logs);rLogs()}};
 $('#pgo').onclick=()=>{if(!t0){t0=Date.now();tick=setInterval(()=>$('#clock').textContent=fmt(Math.floor((Date.now()-t0)/1000)),500);$('#pgo').textContent='Stop and save'}
@@ -334,8 +335,13 @@ applyS();
 $('#a4').value=ld('a4',440);$('#a4').onchange=()=>sv('a4',A4());
 function gs(){const g=ld('set',{}).goal||30,td=new Date().toDateString(),m=Math.round(logs.filter(l=>new Date(l.d).toDateString()===td).reduce((a,l)=>a+l.s,0)/60),ds=new Set(logs.map(l=>new Date(l.d).toDateString()));let n=0,d=new Date();if(!ds.has(d.toDateString()))d.setDate(d.getDate()-1);while(ds.has(d.toDateString())){n++;d.setDate(d.getDate()-1)}return `Today ${m}/${g} min · ${n}-day streak`}
 rLogs();
+function wk7(){const o=[],now=new Date();for(let i=6;i>=0;i--){const d=new Date(now);d.setDate(d.getDate()-i);const k=d.toDateString();o.push([d.toLocaleDateString(undefined,{weekday:'narrow'}),Math.round(logs.filter(l=>new Date(l.d).toDateString()===k).reduce((a,l)=>a+l.s,0)/60)])}const mx=Math.max(10,...o.map(x=>x[1]));return `<div style='display:flex;gap:6px;align-items:flex-end;height:84px;margin-top:16px'>${o.map(([w,m])=>`<div style='flex:1;text-align:center'><div style='height:${Math.max(3,m/mx*60)}px;background:var(--ac);border-radius:6px;opacity:${m?1:.25}'></div><small>${w}</small></div>`).join('')}</div>`}
+const TR={on:0,c:0};
+function bar(){if(!TR.on)return;TR.c++;if(TR.c>=(+$('#trn').value||4)){TR.c=0;const mx=Math.min(300,+$('#trm').value||160);if(bpm<mx)setBpm(Math.min(mx,bpm+(+$('#trs').value||5)))}}
+$('#tro').onclick=()=>{TR.on=!TR.on;TR.c=0;$('#tro').textContent='Speed trainer: '+(TR.on?'On':'Off');$('#tro').classList.toggle('pri',!!TR.on)};
+document.addEventListener('visibilitychange',()=>{if(document.hidden){stopTuner();if(on)toggleM()}});
 /* more menu */
-const MOI=[['sc','Scales and fretboard','Pentatonic, modes and more'],['rc','Recorder','Capture riffs and ideas'],['pr','Practice log','Timer, daily goal and streak'],['se','Settings','Colors, text size, links, backup']];
+const MOI=[['sc','Scales and fretboard','Pentatonic, modes and more'],['rc','Recorder','Capture riffs and ideas'],['pr','Practice log','Timer, daily goal and streak'],['se','Settings','Colors, text size, backup']];
 $('#mol').innerHTML=MOI.map(([v,t,s])=>`<div class='item' data-go='${v}' style='cursor:pointer'><div><b>${t}</b><small>${s}</small></div><span class='mut'>›</span></div>`).join('');
 $('#mol').onclick=e=>{const r=e.target.closest('[data-go]');if(r)show(r.dataset.go)};
 /* scales */
@@ -358,15 +364,8 @@ function rProg(){const k=+$('#pkey').value,D=dg(),b=d=>`<button class='ch' style
 $('#pkey').onchange=rProg;$('#pmode').onchange=rProg;
 $('#cd').onclick=e=>{const d=e.target.dataset.d;if(d===undefined)return;const D=dg()[+d];cs.root=(+$('#pkey').value+D[0])%12;cs.q=D[1];cs.custom=null;$('#qual').value=cs.q;rChord();scrollTo(0,0)};
 rProg();
-/* drums */
-const DR={Rock:['x.......x.x.....','....x.......x...','x.x.x.x.x.x.x.x.'],Pop:['x.......x.......','....x.......x...','xxxxxxxxxxxxxxxx'],Funk:['x..x..x...x..x..','....x..x.x..x...','x.xxx.xxx.xxx.xx'],Ballad:['x.......x.......','....x.......x...','x...x...x...x...'],'Hip-hop':['x.....x...x.....','....x.......x...','x.x.x.x.x.x.x.x.']};
-let dOn=0,dN=0,dS=0,dT,NB;
-function nz(){if(!NB){NB=AC.createBuffer(1,AC.sampleRate,AC.sampleRate);const d=NB.getChannelData(0);for(let i=0;i<d.length;i++)d[i]=Math.random()*2-1}const s=AC.createBufferSource();s.buffer=NB;return s}
-function drum(t,k,l){const a=AC,g=a.createGain();g.connect(a.destination);if(k==='k'){const o=a.createOscillator();o.frequency.setValueAtTime(150,t);o.frequency.exponentialRampToValueAtTime(45,t+.12);g.gain.setValueAtTime(Math.max(vol,.001),t);g.gain.exponentialRampToValueAtTime(.001,t+.3);o.connect(g);o.start(t);o.stop(t+.32)}else{const s=nz(),f=a.createBiquadFilter(),sn=k==='s';f.type=sn?'bandpass':'highpass';f.frequency.value=sn?1800:7000;g.gain.setValueAtTime(Math.max(vol*(sn?.7:.25*l),.001),t);g.gain.exponentialRampToValueAtTime(.001,t+(sn?.18:.05));s.connect(f);f.connect(g);s.start(t);s.stop(t+.2)}}
-function dsched(){const P=DR[$('#dstyle').value];while(dN<AC.currentTime+.12){const i=dS%16;if(P[0][i]==='x')drum(dN,'k',1);if(P[1][i]==='x')drum(dN,'s',1);if(P[2][i]==='x')drum(dN,'h',i%4?.6:1);dN+=60/bpm/4;dS++}}
-if($('#dgo'))$('#dgo').onclick=()=>{if(dOn){dOn=0;clearInterval(dT);$('#dgo').textContent='Start drums';return}wake();ctx();dOn=1;dS=0;dN=AC.currentTime+.06;dsched();dT=setInterval(dsched,25);$('#dgo').textContent='Stop drums'};
 /* recorder */
-const DB=new Promise((ok,no)=>{try{const q=indexedDB.open('tlm',1);q.onupgradeneeded=()=>q.result.createObjectStore('r',{keyPath:'id'});q.onsuccess=()=>ok(q.result);q.onerror=()=>no()}catch(e){no(e)}});
+const DB=new Promise((ok,no)=>{try{const q=indexedDB.open('tlm',1);q.onupgradeneeded=()=>q.result.createObjectStore('r',{keyPath:'id'});q.onsuccess=()=>ok(q.result);q.onerror=()=>no()}catch(e){no(e)}});DB.catch(()=>{});
 const dbx=async(m,f)=>{const d=await DB;return new Promise((ok,no)=>{const t=d.transaction('r',m),r=f(t.objectStore('r'));t.oncomplete=()=>ok(r.result);t.onerror=no})};
 let mr,chunks,rt0,rtk,rst,recU=[];
 async function rRecs(){let all=[];try{all=await dbx('readonly',s=>s.getAll())}catch(e){$('#rl').innerHTML=`<p class='mut c' style='margin:0'>Recording storage isn’t available in this browser.</p>`;return}
@@ -391,7 +390,7 @@ $('#stg').onclick=e=>{const d=e.target.dataset;if(d.tp){stk+=+d.tp;rStage()}if(d
 $('#sauto').onclick=()=>{stA=!stA;$('#sauto').textContent=stA?'Pause':'Scroll';if(stA)stLoop()};
 /* settings */
 let pl=ld('plinks',[]);
-function rPl(){$('#plist').innerHTML=pl.map((l,i)=>`<div class='item'><span>${esc(l.n)}</span><button data-dl='${i}'>Remove</button></div>`).join('');$('#plinks').innerHTML=pl.map(l=>`<a class='big' href='${esc(l.u)}' target='_blank' rel='noopener' style='display:flex;align-items:center;justify-content:center;text-decoration:none;background:var(--fill);color:var(--tx);margin-top:10px;border-radius:18px'>${esc(l.n)}</a>`).join('')}
+function rPl(){}
 const chp=(o,c,k)=>o.map(([l,v])=>`<button class='ch${c==v?' on':''}' data-k='${k}' data-v='${v}'>${l}</button>`).join('');
 function rSet(){$('#sth').innerHTML=chp([['Auto','auto'],['Light','light'],['Dark','dark']],R.dataset.theme||'auto','theme');
  $('#sac').innerHTML=ACS.map(([n,c])=>`<button class='sw' data-k='ac' data-v='${c}' title='${n}' style='background:${c};${S.ac===c?'outline:3px solid var(--tx);outline-offset:2px':''}'></button>`).join('')+`<button class='ch' data-k='ac' data-v='' style='${S.ac?'':'outline:2px solid var(--tx)'}'>Default</button>`;
@@ -399,7 +398,6 @@ function rSet(){$('#sth').innerHTML=chp([['Auto','auto'],['Light','light'],['Dar
 $('#se').onclick=e=>{const d=e.target.dataset;if(d.dl!==undefined){pl.splice(+d.dl,1);sv('plinks',pl);rPl();return}if(d.k===undefined)return;
  if(d.k==='theme'){if(d.v==='auto')delete R.dataset.theme;else R.dataset.theme=d.v;sv('theme',d.v==='auto'?'':d.v)}else{S[d.k]=d.k==='ac'?d.v:+d.v;applyS()}rSet()};
 $('#sgl').onchange=()=>{S.goal=Math.max(1,+$('#sgl').value||30);applyS();rLogs()};
-$('#ladd').onclick=()=>{const n=$('#ln').value.trim();let u=$('#lu').value.trim();if(!n||!u)return;if(!/^https?:\/\//i.test(u))u='https://'+u;pl.push({n,u});sv('plinks',pl);$('#ln').value='';$('#lu').value='';rPl()};
 const BK=['bpm','sig','songs','logs','favs','set','theme','plinks','a4'];
 $('#bcopy').onclick=async()=>{const o={};BK.forEach(k=>{try{const v=localStorage.getItem(k);if(v!==null)o[k]=JSON.parse(v)}catch(e){}});const t=JSON.stringify(o);$('#btx').value=t;$('#btx').select();let ok=0;try{await navigator.clipboard.writeText(t);ok=1}catch(e){}$('#bmsg').textContent=ok?'Backup copied. Paste it into Notes or Messages to keep it safe.':'Select all the text above, copy it and keep it somewhere safe.'};
 $('#brest').onclick=()=>{try{const o=JSON.parse($('#btx').value);let n=0;BK.forEach(k=>{if(k in o){sv(k,o[k]);n++}});if(!n)throw 0;$('#bmsg').textContent='Restored. Reloading…';setTimeout(()=>location.reload(),600)}catch(e){$('#bmsg').textContent='That doesn’t look like a backup. Paste the full backup text first.'}};
