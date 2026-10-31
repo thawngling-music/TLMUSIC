@@ -20,60 +20,74 @@ html,body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.4 -apple-sys
 body{padding:0 16px 96px;max-width:520px;margin:0 auto}
 [hidden]{display:none!important}
 header{display:flex;justify-content:space-between;align-items:center;padding:16px 4px 14px}
-header h1{margin:0;font-size:14px;font-weight:600;letter-spacing:.18em}
-header button{min-height:36px;width:36px;padding:0;border-radius:50%;font-size:16px}
+header h1{margin:0;font-size:calc(14px*var(--k,1));font-weight:600;letter-spacing:.18em}
+header button{min-height:36px;width:36px;padding:0;border-radius:50%;font-size:calc(16px*var(--k,1))}
 section{display:block}
 .card{background:var(--card);border-radius:22px;padding:20px;margin-bottom:12px}
 button,select,input,textarea{font:inherit;color:var(--tx);background:var(--fill);border:0;border-radius:14px;padding:11px 14px}
 button{cursor:pointer;min-height:46px}button:active{transform:scale(.97)}
 .pri{background:var(--ac);color:var(--on);font-weight:600}
-.big{width:100%;font-size:17px;min-height:56px;border-radius:18px}
+.big{width:100%;font-size:calc(17px*var(--k,1));min-height:56px;border-radius:18px}
 .row2{display:flex;gap:8px;align-items:center}.row2>*{flex:1;min-width:0}
-.num{font-size:96px;font-weight:200;line-height:1;text-align:center;letter-spacing:-.03em}
+.num{font-size:calc(96px*var(--k,1));font-weight:200;line-height:1;text-align:center;letter-spacing:-.03em}
 .mut,small{color:var(--mut)}.c{text-align:center}
-label{display:block;font-size:13px;color:var(--mut);margin:12px 0 6px}
+label{display:block;font-size:calc(13px*var(--k,1));color:var(--mut);margin:12px 0 6px}
 input[type=range]{width:100%;padding:0;accent-color:var(--ac);background:none}
 textarea,input[type=text],input[type=number],select{width:100%}
 textarea{min-height:200px;resize:vertical}
 .ch{padding:10px 0;min-height:44px;text-align:center}.ch.on{background:var(--ac);color:var(--on);font-weight:600}
 .g6{display:grid;grid-template-columns:repeat(6,1fr);gap:6px}
 .sigs{display:flex;gap:6px;margin:14px 0}.sigs button{flex:1;padding:10px 0}
-.pm{width:56px;height:56px;border-radius:50%;font-size:24px;padding:0;flex:none}
+.pm{width:56px;height:56px;border-radius:50%;font-size:calc(24px*var(--k,1));padding:0;flex:none}
 .dots{display:flex;gap:10px;justify-content:center;align-items:center;margin:16px 0;flex-wrap:wrap;min-height:20px}
 .dots i{width:9px;height:9px;border-radius:50%;background:var(--line)}.dots i.b{width:15px;height:15px}.dots i.on{background:var(--ac)}.dots i.on.a{background:var(--tx)}
 .item{display:flex;justify-content:space-between;align-items:center;padding:13px 0;border-bottom:1px solid var(--line);gap:8px}
 .item:last-child{border:0}.item small{display:block}
 nav{position:fixed;left:0;right:0;bottom:0;display:flex;background:var(--bg);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom,0px)}
-nav button{flex:1;background:none;border-radius:0;color:var(--mut);font-size:12px;min-height:58px;padding:0}
+nav button{flex:1;background:none;border-radius:0;color:var(--mut);font-size:calc(12px*var(--k,1));min-height:58px;padding:0}
 nav button.on{color:var(--ac);font-weight:600;box-shadow:inset 0 2px 0 var(--ac)}
 .meter{position:relative;height:120px;margin:10px auto;width:260px}
 .scale{position:absolute;inset:0;border-radius:260px 260px 0 0;border:2px solid var(--line);border-bottom:0}
 .mid{position:absolute;left:50%;top:0;width:2px;height:14px;margin-left:-1px;background:var(--ac)}
 .needle{position:absolute;left:50%;bottom:0;width:2px;height:112px;margin-left:-1px;background:var(--tx);transform-origin:50% 100%;transition:transform .12s linear}
 .needle.ok{background:var(--ac);width:3px}
-.note{font-size:84px;font-weight:200;line-height:1;text-align:center}
+.note{font-size:calc(84px*var(--k,1));font-weight:200;line-height:1;text-align:center}
 .chr{display:grid;grid-template-columns:repeat(12,1fr);gap:3px;margin-top:14px}
-.chr b{font-weight:500;font-size:11px;text-align:center;padding:11px 0;border-radius:9px;background:var(--fill);color:var(--mut);cursor:pointer}
+.chr b{font-weight:500;font-size:calc(11px*var(--k,1));text-align:center;padding:11px 0;border-radius:9px;background:var(--fill);color:var(--mut);cursor:pointer}
 .chr b.on{background:var(--ac);color:var(--on)}
 .strs{display:flex;gap:6px}.strs button{flex:1;padding:10px 0}
 .vg{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
 .v{background:var(--fill);border-radius:16px;padding:8px;border:2px solid transparent;cursor:pointer}.v.on{border-color:var(--ac)}
 .v svg,.fv svg{width:100%;display:block}
 svg .ln{stroke:var(--mut);fill:none}svg .d{fill:var(--ac)}svg text{fill:var(--mut);font-size:12px;text-anchor:middle}svg .w{fill:var(--card);stroke:var(--line)}svg .b{fill:var(--tx)}
-.name{font-size:44px;font-weight:300;text-align:center;line-height:1.1}
+.name{font-size:calc(44px*var(--k,1));font-weight:300;text-align:center;line-height:1.1}
 .fv{position:relative;background:var(--fill);border-radius:16px;padding:8px;text-align:center;cursor:pointer}.fv small{display:block}
 .fv .x{position:absolute;right:6px;top:2px;padding:4px 8px;color:var(--mut)}
-body{font-size:var(--fs,16px)}.sw{width:40px;height:40px;min-height:40px;border-radius:50%;padding:0;flex:none}svg .o{fill:var(--fill);stroke:var(--ac)}.sec{margin:16px 0 6px;font-size:13px;color:var(--mut)}body{padding-bottom:28px}nav{position:sticky;top:env(safe-area-inset-top,0px);bottom:auto;left:auto;right:auto;z-index:20;border-top:0;border-bottom:1px solid var(--line);margin:0 -16px 14px;padding:0 8px}nav button{min-height:50px}nav button.on{box-shadow:inset 0 -2px 0 var(--ac)}body::before{content:'';position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:19}*{touch-action:manipulation}input,select,textarea{font-size:16px}button,nav,.item,.v,.fv,header{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}#bpm{font-size:64px;font-weight:300}header h1{display:flex;align-items:center;gap:10px}.logo{width:30px;height:30px;border-radius:50%;display:block}</style></head><body>
-<header><h1><img class="logo" src="icon-192.png" alt="">THAWNG LING MUSIC</h1><div style="display:flex;gap:8px;align-items:center"><button id="abt" style="width:auto;padding:0 14px;border-radius:18px;font-size:13px">Portfolio</button><button id="theme" aria-label="Switch theme">◐</button></div></header>
+body{font-size:var(--fs,16px)}.sw{width:40px;height:40px;min-height:40px;border-radius:50%;padding:0;flex:none}svg .o{fill:var(--fill);stroke:var(--ac)}.sec{margin:16px 0 6px;font-size:calc(13px*var(--k,1));color:var(--mut)}body{padding-bottom:28px}nav{position:sticky;top:env(safe-area-inset-top,0px);bottom:auto;left:auto;right:auto;z-index:20;border-top:0;border-bottom:1px solid var(--line);margin:0 -16px 14px;padding:0 8px}nav button{min-height:50px}nav button.on{box-shadow:inset 0 -2px 0 var(--ac)}body::before{content:'';position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:19}*{touch-action:manipulation}input,select,textarea{font-size:calc(16px*var(--k,1))}button,nav,.item,.v,.fv,header{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}#bpm{font-size:calc(64px*var(--k,1));font-weight:300}header h1{display:flex;align-items:center;gap:10px}.logo{width:30px;height:30px;border-radius:50%;display:block}:root{--glass:rgba(255,255,255,.58);--gb:rgba(255,255,255,.75);--sh:0 8px 28px rgba(20,50,40,.10);--fill:rgba(70,80,75,.09);--line:rgba(70,80,75,.14)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--glass:rgba(26,34,30,.52);--gb:rgba(255,255,255,.12);--sh:0 8px 28px rgba(0,0,0,.4);--fill:rgba(255,255,255,.09);--line:rgba(255,255,255,.1)}}
+:root[data-theme="dark"]{--glass:rgba(26,34,30,.52);--gb:rgba(255,255,255,.12);--sh:0 8px 28px rgba(0,0,0,.4);--fill:rgba(255,255,255,.09);--line:rgba(255,255,255,.1)}
+html,body{overflow-x:hidden;overscroll-behavior:none}body{background:transparent;min-height:100dvh}
+#bg{position:fixed;inset:0;z-index:-1;background-color:var(--bg);background-size:cover;background-position:center}#bg::after{content:'';position:absolute;inset:0;background:var(--bg);opacity:var(--dim,0)}
+.card,nav,header button{background:var(--glass);-webkit-backdrop-filter:blur(22px) saturate(170%);backdrop-filter:blur(22px) saturate(170%);border:1px solid var(--gb);box-shadow:var(--sh)}
+:root.ng .card,:root.ng nav,:root.ng header button{background:var(--card);-webkit-backdrop-filter:none;backdrop-filter:none;box-shadow:none;border-color:transparent}
+nav{margin:0 0 14px;padding:4px;border-radius:26px;top:calc(env(safe-area-inset-top,0px) + 6px)}
+nav button{border-radius:22px;min-height:44px}nav button.on{background:color-mix(in srgb,var(--ac) 20%,transparent);color:var(--ac);box-shadow:none}
+body::before{background:var(--glass);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px)}
+#stg{height:100dvh}#sbg .ch{flex:1 1 30%}
+@keyframes inR{from{opacity:0;transform:translateX(28px)}to{opacity:1;transform:none}}@keyframes inL{from{opacity:0;transform:translateX(-28px)}to{opacity:1;transform:none}}
+.aR{animation:inR .28s ease-out}.aL{animation:inL .28s ease-out}@media(prefers-reduced-motion:reduce){.aR,.aL{animation:none}}
+</style></head><body>
+<div id='bg'></div>
+<header><h1><img class="logo" src="icon-192.png" alt="">THAWNG LING MUSIC</h1><div style="display:flex;gap:8px;align-items:center"><button id="abt" style="width:auto;padding:0 14px;border-radius:18px;font-size:calc(13px*var(--k,1))">Portfolio</button><button id="theme" aria-label="Switch theme">◐</button></div></header>
 <nav><button class="on" data-v="me">Metronome</button><button data-v="tn">Tuner</button><button data-v="cd">Chords</button><button data-v="sl">Setlist</button><button data-v="mo">More</button></nav>
 
 <section id="ab" hidden>
  <div class="card c">
   <img src="icon-192.png" alt="Thawng Ling Music" style="width:96px;height:96px;border-radius:50%;display:block;margin:4px auto 14px">
-  <div class="name" style="font-size:30px">Thawng Ling</div>
+  <div class="name" style="font-size:calc(30px*var(--k,1))">Thawng Ling</div>
   <div class="mut" style="margin-top:4px">Music Producer · Guitarist</div>
-  <div class="mut" style="font-size:13px">Currently Guitarist in the band Root</div>
-  <div class="mut" style="font-size:13px">Formerly with the band Cry of Hope</div>
+  <div class="mut" style="font-size:calc(13px*var(--k,1))">Currently Guitarist in the band Root</div>
+  <div class="mut" style="font-size:calc(13px*var(--k,1))">Formerly with the band Cry of Hope</div>
  </div>
  <div class="card">
   <p style="margin:0;line-height:1.6">Hello, I’m Thawng Ling, a Music Producer and Guitarist, formerly with the band Cry of Hope. With years of experience collaborating with prominent Myanmar artists, I dedicate this channel to sharing my original music, professional guitar work, and creative productions.</p>
@@ -86,7 +100,7 @@ body{font-size:var(--fs,16px)}.sw{width:40px;height:40px;min-height:40px;border-
   <div class="item"><span>Collaborations with Myanmar artists</span></div>
  </div>
  <a class="pri big" href="https://youtube.com/@thawnglingmusic" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;text-decoration:none">Watch on YouTube</a>
- <p class="c mut" style="font-size:13px">youtube.com/@thawnglingmusic</p>
+ <p class="c mut" style="font-size:calc(13px*var(--k,1))">youtube.com/@thawnglingmusic</p>
  <div id='plinks'></div>
 </section>
 
@@ -106,7 +120,7 @@ body{font-size:var(--fs,16px)}.sw{width:40px;height:40px;min-height:40px;border-
   <label>Volume</label><input type="range" id="vol" min="0" max="100" value="80">
   <button id="tap" class="big" style="margin-top:10px">Tap tempo</button>
   <label>Speed trainer: raise the tempo every few bars until the max</label><div class='row2'><input type='number' id='trs' value='5' min='1' max='50'><input type='number' id='trn' value='4' min='1' max='32'><input type='number' id='trm' value='160' min='40' max='300'></div><div class='row2'><small class='c'>+BPM</small><small class='c'>every bars</small><small class='c'>max BPM</small></div><button id='tro' class='big' style='margin-top:10px'>Speed trainer: Off</button>
-  <p class="mut" style="font-size:13px;margin:12px 0 0">In 6/8 the tempo counts the dotted quarter note.</p>
+  <p class="mut" style="font-size:calc(13px*var(--k,1));margin:12px 0 0">In 6/8 the tempo counts the dotted quarter note.</p>
  </div>
 </section>
 
@@ -118,7 +132,7 @@ body{font-size:var(--fs,16px)}.sw{width:40px;height:40px;min-height:40px;border-
   <div class="c" id="cents">0 cents</div>
   <div class="chr" id="chrom"></div>
   <button class="pri big" id="tgo" style="margin-top:16px">Start tuner</button>
-  <p class="c mut" id="thint" style="font-size:13px"></p>
+  <p class="c mut" id="thint" style="font-size:calc(13px*var(--k,1))"></p>
  </div>
  <div class="card">
   <div class="row2">
@@ -146,8 +160,8 @@ body{font-size:var(--fs,16px)}.sw{width:40px;height:40px;min-height:40px;border-
 
 <section id='mo' hidden><div class='card' id='mol'></div></section>
 <section id='sc' hidden><div class='card'><div class='row2'><select id='sroot'></select><select id='sscale'></select></div><div style='overflow-x:auto;margin-top:14px'><div id='sboard' style='min-width:560px'></div></div><div class='c mut' id='snotes' style='margin:10px 0'></div><button class='pri big' id='splay'>Play scale</button></div></section>
-<section id='rc' hidden><div class='card c'><div class='num' id='rt' style='font-size:64px'>00:00</div><button class='pri big' id='rgo' style='margin-top:14px'>Record</button><p class='mut' id='rh' style='font-size:13px;margin:10px 0 0'>Records from your microphone and saves on this phone.</p></div><div class='card' id='rl'></div></section>
-<section id='se' hidden><div class='card'><div class='sec' style='margin-top:0'>Theme</div><div class='row2' id='sth'></div><div class='sec'>Accent color</div><div class='row2' id='sac' style='flex-wrap:wrap'></div><div class='sec'>Text size</div><div class='row2' id='sfs'></div></div><div class='card'><div class='sec' style='margin-top:0'>Metronome click sound</div><div class='row2' id='ssn'></div><div class='sec'>Keep screen awake (metronome, drums, stage)</div><div class='row2' id='swk'></div><div class='sec'>Daily practice goal (minutes)</div><input type='number' id='sgl' min='1'></div><div class='card'><div class='sec' style='margin-top:0'>Backup and restore</div><textarea id='btx' style='min-height:90px' placeholder='Backup text appears here. To restore, paste a backup here.'></textarea><div class='row2' style='margin-top:8px'><button class='pri' id='bcopy'>Copy backup</button><button id='brest'>Restore</button></div><p class='mut' id='bmsg' style='font-size:13px;margin:10px 0 0'>Covers songs, chords, practice log, settings and links. Recordings stay on this phone and aren’t included.</p></div><button id='rst' class='big'>Reset all data</button></section>
+<section id='rc' hidden><div class='card c'><div class='num' id='rt' style='font-size:calc(64px*var(--k,1))'>00:00</div><button class='pri big' id='rgo' style='margin-top:14px'>Record</button><p class='mut' id='rh' style='font-size:calc(13px*var(--k,1));margin:10px 0 0'>Records from your microphone and saves on this phone.</p></div><div class='card' id='rl'></div></section>
+<section id='se' hidden><div class='card'><div class='sec' style='margin-top:0'>Theme</div><div class='row2' id='sth'></div><div class='sec'>Accent color</div><div class='row2' id='sac' style='flex-wrap:wrap'></div><div class='sec'>Text size</div><div id='sfs'></div><div class='sec'>Background</div><div class='row2' id='sbg' style='flex-wrap:wrap'></div><div class='row2' style='margin-top:8px'><button id='bgpick'>Choose photo from iPhone</button><input type='file' id='bgf' accept='image/*' hidden></div><div class='sec'>Photo dimming</div><input type='range' id='bgdim' min='0' max='85'><div class='sec'>Glass effect</div><div class='row2' id='sgls'></div><div class='sec'>Swipe between pages</div><div class='row2' id='ssw'></div></div><div class='card'><div class='sec' style='margin-top:0'>Metronome click sound</div><div class='row2' id='ssn'></div><div class='sec'>Keep screen awake (metronome, drums, stage)</div><div class='row2' id='swk'></div><div class='sec'>Daily practice goal (minutes)</div><input type='number' id='sgl' min='1'></div><div class='card'><div class='sec' style='margin-top:0'>Backup and restore</div><textarea id='btx' style='min-height:90px' placeholder='Backup text appears here. To restore, paste a backup here.'></textarea><div class='row2' style='margin-top:8px'><button class='pri' id='bcopy'>Copy backup</button><button id='brest'>Restore</button></div><p class='mut' id='bmsg' style='font-size:calc(13px*var(--k,1));margin:10px 0 0'>Covers songs, chords, practice log, settings and links. Recordings stay on this phone and aren’t included.</p></div><button id='rst' class='big'>Reset all data</button></section>
 <section id="sl" hidden>
  <div id="list" class="card"></div>
  <button class="pri big" id="add">Add song</button>
@@ -163,7 +177,7 @@ body{font-size:var(--fs,16px)}.sw{width:40px;height:40px;min-height:40px;border-
 
 <section id="pr" hidden>
  <div class="card">
-  <div class="num" id="clock" style="font-size:72px">00:00</div>
+  <div class="num" id="clock" style="font-size:calc(72px*var(--k,1))">00:00</div>
   <input type="text" id="pn" placeholder="What are you practicing?" style="margin:14px 0">
   <button class="pri big" id="pgo">Start practice</button>
   <div class="row2" style="margin-top:10px"><input type="number" id="pm" placeholder="Minutes" min="1"><button id="padd">Add minutes</button></div>
@@ -181,7 +195,7 @@ const ld=(k,d)=>{try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}ca
 const sv=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}};
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 let AC;function ctx(){if(!AC)AC=new(window.AudioContext||window.webkitAudioContext)();if(AC.state==='suspended')AC.resume();return AC}
-function show(v){$$('nav button').forEach(b=>b.classList.toggle('on',b.dataset.v===v||(b.dataset.v==='mo'&&['sc','rc','pr','se'].includes(v))));$$('section').forEach(s=>s.hidden=s.id!==v);if(v!=='tn')stopTuner();$('#abt').textContent=v==='ab'?'Home':'Portfolio';if(v==='se')rSet();if(v==='rc')rRecs();scrollTo(0,0)}
+function show(v){$$('nav button').forEach(b=>b.classList.toggle('on',b.dataset.v===v||(b.dataset.v==='mo'&&['sc','rc','pr','se'].includes(v))));$$('section').forEach(s=>s.hidden=s.id!==v);if(v!=='tn')stopTuner();$('#abt').textContent=v==='ab'?'Home':'Portfolio';if(v==='se')rSet();if(v==='rc')rRecs();scrollTo(0,0);anim(v)}
 $$('nav button').forEach(b=>b.onclick=()=>show(b.dataset.v));
 $('#abt').onclick=()=>{if($('#ab').hidden){show('ab');scrollTo(0,0)}else{show('me');scrollTo(0,0)}};
 /* theme */
@@ -318,7 +332,7 @@ let logs=ld('logs',[]),t0=0,tick;
 const fmt=s=>String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0');
 function addLog(sec){logs.unshift({id:Date.now(),d:new Date().toISOString(),s:sec,n:$('#pn').value.trim()});sv('logs',logs);rLogs()}
 function rLogs(){const wk=Date.now()-7*864e5,w=logs.filter(l=>new Date(l.d)>=wk).reduce((a,l)=>a+l.s,0),t=logs.reduce((a,l)=>a+l.s,0);
- $('#sum').innerHTML=`<b style="font-size:28px;font-weight:300">${Math.round(w/60)} min</b> this week<br><small>${Math.round(t/60)} min in total</small><br><small>${gs()}</small>${wk7()}`;
+ $('#sum').innerHTML=`<b style="font-size:calc(28px*var(--k,1));font-weight:300">${Math.round(w/60)} min</b> this week<br><small>${Math.round(t/60)} min in total</small><br><small>${gs()}</small>${wk7()}`;
  $('#logs').innerHTML=logs.length?logs.map(l=>`<div class="item"><div><b>${Math.max(1,Math.round(l.s/60))} min</b> ${esc(l.n||'Practice')}<small>${new Date(l.d).toLocaleDateString(undefined,{month:'short',day:'numeric'})}</small></div><button data-id="${l.id}">Delete</button></div>`).join(''):'<p class="mut c" style="margin:0">Your practice sessions will show up here.</p>'}
 $('#logs').onclick=e=>{const id=e.target.dataset.id;if(id){logs=logs.filter(l=>l.id!=id);sv('logs',logs);rLogs()}};
 $('#pgo').onclick=()=>{if(!t0){t0=Date.now();tick=setInterval(()=>$('#clock').textContent=fmt(Math.floor((Date.now()-t0)/1000)),500);$('#pgo').textContent='Stop and save'}
@@ -326,10 +340,12 @@ $('#pgo').onclick=()=>{if(!t0){t0=Date.now();tick=setInterval(()=>$('#clock').te
 $('#padd').onclick=()=>{const m=+$('#pm').value;if(m>0){addLog(m*60);$('#pm').value=''}};
 rLogs();
 /* ---- v3 ---- */
-const S=Object.assign({ac:'',fs:16,snd:0,wake:0,goal:30},ld('set',{}));
+const BGS={none:'',aurora:'radial-gradient(60% 45% at 12% 8%,rgba(63,220,171,.55),transparent),radial-gradient(55% 40% at 95% 28%,rgba(124,92,240,.45),transparent),radial-gradient(70% 50% at 45% 100%,rgba(47,125,246,.45),transparent)',sunset:'radial-gradient(60% 45% at 10% 8%,rgba(242,140,40,.55),transparent),radial-gradient(55% 40% at 95% 30%,rgba(230,75,122,.45),transparent),radial-gradient(70% 50% at 40% 100%,rgba(124,92,240,.4),transparent)',ocean:'radial-gradient(60% 45% at 15% 5%,rgba(47,125,246,.5),transparent),radial-gradient(55% 40% at 90% 35%,rgba(63,220,171,.4),transparent),radial-gradient(70% 50% at 50% 100%,rgba(30,80,200,.45),transparent)',forest:'radial-gradient(60% 45% at 10% 8%,rgba(63,200,120,.5),transparent),radial-gradient(55% 40% at 95% 30%,rgba(201,154,26,.4),transparent),radial-gradient(70% 50% at 45% 100%,rgba(15,157,122,.45),transparent)'};
+function applyBg(){let img='';if(S.bg==='photo'){try{const p=localStorage.getItem('bgimg');if(p)img=`url(${p})`}catch(e){}}else img=BGS[S.bg]||'';$('#bg').style.backgroundImage=img;R.style.setProperty('--dim',S.bg==='photo'?S.dim/100:0);R.classList.toggle('ng',S.glass===0)}
+const S=Object.assign({ac:'',fs:16,snd:0,wake:0,goal:30,bg:'aurora',dim:35,glass:1,swipe:1},ld('set',{}));
 const ACS=[['Mint','#0f9d7a'],['Blue','#2f7df6'],['Violet','#7c5cf0'],['Orange','#f28c28'],['Rose','#e64b7a'],['Gold','#c99a1a']];
 const lum=h=>{const n=parseInt(h.slice(1),16);return(((n>>16)*299+((n>>8)&255)*587+(n&255)*114)/1000>150)?'#111':'#fff'};
-function applyS(){if(S.ac){R.style.setProperty('--ac',S.ac);R.style.setProperty('--on',lum(S.ac))}else{R.style.removeProperty('--ac');R.style.removeProperty('--on')}R.style.setProperty('--fs',S.fs+'px');sv('set',S)}
+function applyS(nb){if(S.ac){R.style.setProperty('--ac',S.ac);R.style.setProperty('--on',lum(S.ac))}else{R.style.removeProperty('--ac');R.style.removeProperty('--on')}R.style.setProperty('--fs',S.fs+'px');R.style.setProperty('--k',S.fs/16);if(!nb)applyBg();sv('set',S)}
 function wake(){try{if(S.wake&&navigator.wakeLock)navigator.wakeLock.request('screen').catch(()=>{})}catch(e){}}
 applyS();
 $('#a4').value=ld('a4',440);$('#a4').onchange=()=>sv('a4',A4());
@@ -340,6 +356,15 @@ const TR={on:0,c:0};
 function bar(){if(!TR.on)return;TR.c++;if(TR.c>=(+$('#trn').value||4)){TR.c=0;const mx=Math.min(300,+$('#trm').value||160);if(bpm<mx)setBpm(Math.min(mx,bpm+(+$('#trs').value||5)))}}
 $('#tro').onclick=()=>{TR.on=!TR.on;TR.c=0;$('#tro').textContent='Speed trainer: '+(TR.on?'On':'Off');$('#tro').classList.toggle('pri',!!TR.on)};
 document.addEventListener('visibilitychange',()=>{if(document.hidden){stopTuner();if(on)toggleM()}});
+const ORD=['me','tn','cd','sl','mo'];let curV='me';
+const oi=v=>ORD.indexOf(v)<0?5:ORD.indexOf(v);
+function anim(v){const a=oi(curV),b=oi(v),el=document.getElementById(v);if(el){el.classList.remove('aL','aR');void el.offsetWidth;el.classList.add(b>=a?'aR':'aL')}curV=v}
+let sx=0,sy=0,sok=0;
+document.addEventListener('touchstart',e=>{const t=e.touches[0];sx=t.clientX;sy=t.clientY;sok=S.swipe!==0&&$('#stg').hidden&&!e.target.closest('input,textarea,select,audio,#sboard')},{passive:true});
+document.addEventListener('touchend',e=>{if(!sok)return;sok=0;const t=e.changedTouches[0],dx=t.clientX-sx,dy=t.clientY-sy;if(Math.abs(dx)<70||Math.abs(dx)<Math.abs(dy)*1.6)return;const i=ORD.indexOf(curV);if(i>=0){const j=i+(dx<0?1:-1);if(j>=0&&j<ORD.length)show(ORD[j])}else if(dx>0)show(curV==='ab'?'me':'mo')},{passive:true});
+$('#se').oninput=e=>{if(e.target.id==='fsr'){S.fs=+e.target.value;$('#fsv').textContent=S.fs+' px';applyS(1)}else if(e.target.id==='bgdim'){S.dim=+e.target.value;R.style.setProperty('--dim',S.bg==='photo'?S.dim/100:0);sv('set',S)}};
+$('#bgpick').onclick=()=>$('#bgf').click();
+$('#bgf').onchange=e=>{const f=e.target.files[0];if(!f)return;const im=new Image(),u=URL.createObjectURL(f);im.onload=()=>{const k=Math.min(1,1400/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=Math.round(im.width*k);c.height=Math.round(im.height*k);c.getContext('2d').drawImage(im,0,0,c.width,c.height);URL.revokeObjectURL(u);try{localStorage.setItem('bgimg',c.toDataURL('image/jpeg',.72));S.bg='photo';applyS();rSet()}catch(x){$('#bmsg').textContent='This photo is too large to save. Try a smaller one.'}};im.onerror=()=>URL.revokeObjectURL(u);im.src=u;e.target.value=''};
 /* more menu */
 const MOI=[['sc','Scales and fretboard','Pentatonic, modes and more'],['rc','Recorder','Capture riffs and ideas'],['pr','Practice log','Timer, daily goal and streak'],['se','Settings','Colors, text size, backup']];
 $('#mol').innerHTML=MOI.map(([v,t,s])=>`<div class='item' data-go='${v}' style='cursor:pointer'><div><b>${t}</b><small>${s}</small></div><span class='mut'>›</span></div>`).join('');
@@ -394,9 +419,9 @@ function rPl(){}
 const chp=(o,c,k)=>o.map(([l,v])=>`<button class='ch${c==v?' on':''}' data-k='${k}' data-v='${v}'>${l}</button>`).join('');
 function rSet(){$('#sth').innerHTML=chp([['Auto','auto'],['Light','light'],['Dark','dark']],R.dataset.theme||'auto','theme');
  $('#sac').innerHTML=ACS.map(([n,c])=>`<button class='sw' data-k='ac' data-v='${c}' title='${n}' style='background:${c};${S.ac===c?'outline:3px solid var(--tx);outline-offset:2px':''}'></button>`).join('')+`<button class='ch' data-k='ac' data-v='' style='${S.ac?'':'outline:2px solid var(--tx)'}'>Default</button>`;
- $('#sfs').innerHTML=chp([['Small',15],['Medium',16],['Large',19]],S.fs,'fs');$('#ssn').innerHTML=chp([['Soft',0],['Sharp',1],['Warm',2]],S.snd,'snd');$('#swk').innerHTML=chp([['Off',0],['On',1]],S.wake,'wake');$('#sgl').value=S.goal;rPl()}
+ $('#sfs').innerHTML=`<div class='row2'><span class='mut'>A</span><input type='range' id='fsr' min='13' max='22' step='1' value='${S.fs}'><b style='font-size:22px'>A</b></div><div class='c mut' id='fsv'>${S.fs} px</div>`;$('#sbg').innerHTML=chp([['None','none'],['Aurora','aurora'],['Sunset','sunset'],['Ocean','ocean'],['Forest','forest'],['Photo','photo']],S.bg,'bg');$('#bgdim').value=S.dim;$('#sgls').innerHTML=chp([['On',1],['Off',0]],S.glass,'glass');$('#ssw').innerHTML=chp([['On',1],['Off',0]],S.swipe,'swipe');$('#ssn').innerHTML=chp([['Soft',0],['Sharp',1],['Warm',2]],S.snd,'snd');$('#swk').innerHTML=chp([['Off',0],['On',1]],S.wake,'wake');$('#sgl').value=S.goal;rPl()}
 $('#se').onclick=e=>{const d=e.target.dataset;if(d.dl!==undefined){pl.splice(+d.dl,1);sv('plinks',pl);rPl();return}if(d.k===undefined)return;
- if(d.k==='theme'){if(d.v==='auto')delete R.dataset.theme;else R.dataset.theme=d.v;sv('theme',d.v==='auto'?'':d.v)}else{S[d.k]=d.k==='ac'?d.v:+d.v;applyS()}rSet()};
+ if(d.k==='theme'){if(d.v==='auto')delete R.dataset.theme;else R.dataset.theme=d.v;sv('theme',d.v==='auto'?'':d.v)}else{if(d.k==='bg'&&d.v==='photo'){let h='';try{h=localStorage.getItem('bgimg')}catch(x){}if(!h){$('#bgf').click();return}}S[d.k]=(d.k==='ac'||d.k==='bg')?d.v:+d.v;applyS()}rSet()};
 $('#sgl').onchange=()=>{S.goal=Math.max(1,+$('#sgl').value||30);applyS();rLogs()};
 const BK=['bpm','sig','songs','logs','favs','set','theme','plinks','a4'];
 $('#bcopy').onclick=async()=>{const o={};BK.forEach(k=>{try{const v=localStorage.getItem(k);if(v!==null)o[k]=JSON.parse(v)}catch(e){}});const t=JSON.stringify(o);$('#btx').value=t;$('#btx').select();let ok=0;try{await navigator.clipboard.writeText(t);ok=1}catch(e){}$('#bmsg').textContent=ok?'Backup copied. Paste it into Notes or Messages to keep it safe.':'Select all the text above, copy it and keep it somewhere safe.'};
