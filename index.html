@@ -100,7 +100,7 @@ nav button{position:relative;z-index:1}nav button.on{background:none;color:var(-
 #needle{stroke:var(--tx);stroke-width:3;stroke-linecap:round;transform-origin:150px 150px;transition:transform .14s ease-out}#needle.ok{stroke:var(--ac)}
 #nn{font-size:88px;font-weight:300;line-height:1;margin-top:-6px}
 .lamps{display:flex;gap:12px;justify-content:center;margin:10px 0 6px}.lamp{width:52px;height:30px;border-radius:15px;display:flex;align-items:center;justify-content:center;background:var(--fill);color:var(--mut);font-size:15px;transition:background .15s}.lamp.on{background:var(--ac);color:var(--on)}#lf.on,#ls.on{background:#f5a623;color:#111}
-.cc{background:var(--fill);border-radius:12px;padding:8px 10px;text-align:center;min-width:58px}.cc b{display:block;font-size:18px}button:disabled{opacity:.4}.msg{padding:10px 14px;border-radius:18px;margin:8px 0;max-width:94%;white-space:pre-wrap;overflow-wrap:anywhere}.msg.u{margin-left:auto;background:color-mix(in srgb,var(--ac) 22%,transparent)}.msg.a{background:var(--fill)}.msg.e{background:rgba(239,68,68,.15);color:#ef4444}</style></head><body>
+.cc{background:var(--fill);border-radius:12px;padding:8px 10px;text-align:center;min-width:58px}.cc b{display:block;font-size:18px}button:disabled{opacity:.4}.msg{padding:10px 14px;border-radius:18px;margin:8px 0;max-width:94%;white-space:pre-wrap;overflow-wrap:anywhere}.msg.u{margin-left:auto;background:color-mix(in srgb,var(--ac) 22%,transparent)}.msg.a{background:var(--fill)}.msg.e{background:rgba(239,68,68,.15);color:#ef4444}.pg{border-bottom:1px solid var(--line);padding:10px 0}.pg:last-child{border:0}.pgh{display:flex;justify-content:space-between;align-items:center;gap:8px;cursor:pointer}.pgh small{display:block}.pgb{margin-top:8px}.pgb p{margin:2px 0 10px}.ub{flex:none;min-height:36px;padding:0 12px;border-radius:18px;font-size:13px}.ub.on{background:var(--ac);color:var(--on)}.brand{margin:16px 6px 6px;font-weight:700;letter-spacing:.06em;color:var(--mut);font-size:calc(13px*var(--k,1))}</style></head><body>
 <div id='bg'></div>
 <header><h1><img class="logo" src="icon-192.png" alt="">THAWNG LING MUSIC</h1><div style="display:flex;gap:8px;align-items:center"><button id="theme" aria-label="Switch theme">◐</button></div></header>
 <nav><i id='npill'></i><button class="on" data-v="me">Metronome</button><button data-v="tn">Tuner</button><button data-v="cd">Chords</button><button data-v="mx">Mix</button><button data-v="mo">More</button></nav>
@@ -244,10 +244,26 @@ nav button{position:relative;z-index:1}nav button.on{background:none;color:var(-
   <p class='mut' style='font-size:13px;margin:12px 0 0'>Get a token: github.com → your profile → Settings → Developer settings → Personal access tokens → Fine-grained tokens → Generate new token. Under Permissions find Models and set it to Read-only. Choose a short expiry, copy the token and paste it above. Free use has daily limits, and model names can change, so use Refresh models if one stops working.</p>
  </div></details>
 </section>
+<section id='pg' hidden>
+ <div class='card'>
+  <div class='ttl'>Plugin Guide</div>
+  <p class='mut c' id='pgsub' style='margin:6px 0 12px;font-size:13px'></p>
+  <input type='text' id='pgq' placeholder='Search plugins…'>
+  <div class='row2' id='pgbr' style='flex-wrap:wrap;margin-top:10px'></div>
+  <select id='pgct' style='margin-top:10px'></select>
+ </div>
+ <div id='pgl'></div>
+ <div class='card'><b>Add your own plugin</b>
+  <input type='text' id='pgn' placeholder='Plugin name (e.g. Brand – Name)' style='margin-top:10px'>
+  <select id='pgc' style='margin-top:8px'></select>
+  <textarea id='pgt' placeholder='How it works and what it is best for' style='min-height:70px;margin-top:8px'></textarea>
+  <button id='pgadd' class='pri big' style='margin-top:10px'>Add to My plugins</button>
+ </div>
+</section>
 <section id='mo' hidden><div class='card' id='mol'></div></section>
 <section id='sc' hidden><div class='card'><div class='row2'><select id='sroot'></select><select id='sscale'></select></div><div style='overflow-x:auto;margin-top:14px'><div id='sboard' style='min-width:560px'></div></div><div class='c mut' id='snotes' style='margin:10px 0'></div><button class='pri big' id='splay'>Play scale</button></div></section>
 <section id='rc' hidden><div class='card c'><div class='num' id='rt' style='font-size:calc(64px*var(--k,1))'>00:00</div><button class='pri big' id='rgo' style='margin-top:14px'>Record</button><p class='mut' id='rh' style='font-size:calc(13px*var(--k,1));margin:10px 0 0'>Records from your microphone and saves on this phone.</p></div><div class='card' id='rl'></div></section>
-<section id='se' hidden><div class='card'><div class='item' id='gopf' style='cursor:pointer;padding:0'><div><b>Portfolio</b><small>About Thawng Ling and the YouTube channel</small></div><span class='mut'>›</span></div></div><div class='card'><div class='sec' style='margin-top:0'>Theme</div><div class='row2' id='sth'></div><div class='sec'>Accent color</div><div class='row2' id='sac' style='flex-wrap:wrap'></div><div class='sec'>Text size</div><div id='sfs'></div><div class='sec'>Background</div><div class='row2' id='sbg' style='flex-wrap:wrap'></div><div class='row2' style='margin-top:8px'><button id='bgpick'>Choose photo from iPhone</button><input type='file' id='bgf' accept='image/*' hidden></div><div class='sec'>Photo dimming</div><input type='range' id='bgdim' min='0' max='85'><div class='sec'>Glass effect</div><div class='row2' id='sgls'></div><div class='sec'>Swipe between pages</div><div class='row2' id='ssw'></div></div><div class='card'><div class='sec' style='margin-top:0'>Metronome click sound</div><div class='row2' id='ssn'></div><div class='sec'>Keep screen awake (metronome, drums, stage)</div><div class='row2' id='swk'></div><div class='sec'>Daily practice goal (minutes)</div><input type='number' id='sgl' min='1'></div><div class='card'><div class='sec' style='margin-top:0'>Backup and restore</div><textarea id='btx' style='min-height:90px' placeholder='Backup text appears here. To restore, paste a backup here.'></textarea><div class='row2' style='margin-top:8px'><button class='pri' id='bcopy'>Copy backup</button><button id='brest'>Restore</button></div><p class='mut' id='bmsg' style='font-size:calc(13px*var(--k,1));margin:10px 0 0'>Covers songs, chords, practice log, settings and links. Recordings stay on this phone and aren’t included.</p></div><button id='rst' class='big'>Reset all data</button><p class='c mut' style='font-size:12px;margin:14px 0 0'>THAWNG LING MUSIC · version 11</p></section>
+<section id='se' hidden><div class='card'><div class='item' id='gopf' style='cursor:pointer;padding:0'><div><b>Portfolio</b><small>About Thawng Ling and the YouTube channel</small></div><span class='mut'>›</span></div></div><div class='card'><div class='sec' style='margin-top:0'>Theme</div><div class='row2' id='sth'></div><div class='sec'>Accent color</div><div class='row2' id='sac' style='flex-wrap:wrap'></div><div class='sec'>Text size</div><div id='sfs'></div><div class='sec'>Background</div><div class='row2' id='sbg' style='flex-wrap:wrap'></div><div class='row2' style='margin-top:8px'><button id='bgpick'>Choose photo from iPhone</button><input type='file' id='bgf' accept='image/*' hidden></div><div class='sec'>Photo dimming</div><input type='range' id='bgdim' min='0' max='85'><div class='sec'>Glass effect</div><div class='row2' id='sgls'></div><div class='sec'>Swipe between pages</div><div class='row2' id='ssw'></div></div><div class='card'><div class='sec' style='margin-top:0'>Metronome click sound</div><div class='row2' id='ssn'></div><div class='sec'>Keep screen awake (metronome, drums, stage)</div><div class='row2' id='swk'></div><div class='sec'>Daily practice goal (minutes)</div><input type='number' id='sgl' min='1'></div><div class='card'><div class='sec' style='margin-top:0'>Backup and restore</div><textarea id='btx' style='min-height:90px' placeholder='Backup text appears here. To restore, paste a backup here.'></textarea><div class='row2' style='margin-top:8px'><button class='pri' id='bcopy'>Copy backup</button><button id='brest'>Restore</button></div><p class='mut' id='bmsg' style='font-size:calc(13px*var(--k,1));margin:10px 0 0'>Covers songs, chords, practice log, settings and links. Recordings stay on this phone and aren’t included.</p></div><button id='rst' class='big'>Reset all data</button><p class='c mut' style='font-size:12px;margin:14px 0 0'>THAWNG LING MUSIC · version 12</p></section>
 <section id="sl" hidden>
  <div id="list" class="card"></div>
  <button class="pri big" id="add">Add song</button>
@@ -279,9 +295,9 @@ nav button{position:relative;z-index:1}nav button.on{background:none;color:var(-
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const ld=(k,d)=>{try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}};
 const sv=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}};
-const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 let AC;function ctx(){if(!AC)AC=new(window.AudioContext||window.webkitAudioContext)();if(AC.state==='suspended')AC.resume();return AC}
-function show(v){$$('nav button').forEach(b=>b.classList.toggle('on',b.dataset.v===v||(b.dataset.v==='mo'&&['sc','sl','rc','pr','se','ab','an','mt','ai'].includes(v))));$$('section').forEach(s=>s.hidden=s.id!==v);if(v!=='tn')stopTuner();movePill();if(v!=='mt'&&SK.run)skStop();if(v==='se')rSet();if(v==='ai')rAi();if(v==='rc')rRecs();if(v==='mx')rMx();scrollTo(0,0);anim(v)}
+function show(v){$$('nav button').forEach(b=>b.classList.toggle('on',b.dataset.v===v||(b.dataset.v==='mo'&&['sc','sl','rc','pr','se','ab','an','mt','ai','pg'].includes(v))));$$('section').forEach(s=>s.hidden=s.id!==v);if(v!=='tn')stopTuner();movePill();if(v!=='mt'&&SK.run)skStop();if(v==='se')rSet();if(v==='ai')rAi();if(v==='pg')rPg();if(v==='rc')rRecs();if(v==='mx')rMx();scrollTo(0,0);anim(v)}
 $$('nav button').forEach(b=>b.onclick=()=>show(b.dataset.v));
 $('#abk').onclick=()=>show('se');$('#gopf').onclick=()=>show('ab');
 /* theme */
@@ -626,8 +642,103 @@ $('#aicp').onclick=()=>{aiCopy('Copied. Now paste it into Claude, ChatGPT or any
 $('#aicl').onclick=()=>{const f=aiCopy('Opening Claude. If the question is empty there, just paste it.');if(f)window.open('https://claude.ai/new?q='+encodeURIComponent(f),'_blank')};
 $('#aigp').onclick=()=>{const f=aiCopy('Opening ChatGPT. If the question is empty there, just paste it.');if(f)window.open('https://chatgpt.com/?q='+encodeURIComponent(f),'_blank')};
 rAi();
+/* plugin guide */
+const PLG=`UAD|1176 Classic Limiter|Compressor|FET compressor with very fast attack and release. Ratio buttons (4, 8, 12, 20); all buttons in = dense, aggressive squash.|Vocals, drums, bass and guitars that need energy.
+UAD|LA-2A Classic Leveler|Compressor|Optical compressor. Slow, smooth, program-dependent leveling with just Peak Reduction and Gain.|Smooth vocals and bass; gentle leveling.
+UAD|Fairchild 660/670|Compressor|Vari-mu tube compressor with thick, smooth gain reduction and adjustable time constants.|Mix bus glue, vocals, drum bus.
+UAD|Neve 33609|Compressor|Diode-bridge compressor/limiter. Punchy yet smooth with fixed ratios and release choices.|Drum bus, mix bus, bass.
+UAD|API 2500 Bus Compressor|Compressor|Stereo bus compressor with a Thrust filter and feed-forward or feed-back types for extra punch.|Punchy drum bus and mix bus.
+UAD|SSL G Bus Compressor|Compressor|Classic VCA bus compressor. Simple threshold, ratio, attack and release switches that glue a mix together.|Mix bus and drum bus glue.
+UAD|Pultec Passive EQ (EQP-1A)|EQ|Passive tube EQ with broad, musical shelves. Boosting and cutting the same low frequency gives the Pultec trick.|Air on vocals, weight on kick and bass, mix bus.
+UAD|Neve 1073 Preamp & EQ|Channel|Console preamp and EQ with a warm, thick tone. Input gain adds drive, EQ uses fixed frequencies.|Vocals, guitars, drums; instant character.
+UAD|SSL E Series Channel Strip|Channel|Console strip with EQ, compressor and gate in one. Punchy and forward sound.|Fast full mixing on drums, guitars, vocals.
+UAD|Manley Massive Passive EQ|EQ|Passive tube EQ with wide, gentle, interacting bands. Very musical curves.|Mix bus, mastering, polishing instruments.
+UAD|Lexicon 224 Digital Reverb|Reverb|Classic digital reverb with lush halls and plates from the 80s sound.|Vocals, snare, big ballad space.
+UAD|EMT 140 Plate Reverb|Reverb|Plate reverb emulation. Dense, smooth tail with fast build-up.|Vocals, snare, guitars.
+UAD|Capitol Chambers|Reverb|Models the echo chambers of Capitol Studios. Natural, rich space with adjustable mic positions.|Natural ambience on vocals and strings.
+UAD|Roland RE-201 Space Echo|Delay|Tape echo with spring reverb. Warm, slightly wobbly repeats from multiple playback heads.|Vintage delay on vocals and guitars.
+UAD|Studer A800 Tape Recorder|Saturation|Tape machine emulation. Adds tape compression, harmonics and gentle glue.|Drum bus, mix bus, warmth.
+UAD|Ampex ATR-102|Mastering|Mastering tape machine. Gentle compression and harmonic richness with speed and tape choices.|Mix bus and mastering warmth.
+UAD|Marshall Plexi Classic Amp|Amp|Plexi-style amp. Crunchy, classic rock tone that cleans up with the guitar volume.|Classic rock rhythm and lead guitar.
+UAD|Friedman BE100 Deluxe|Amp|High-gain modern British amp. Tight, aggressive crunch with plenty of detail.|Hard rock and metal guitars.
+UAD|Fender Tweed Deluxe (55)|Amp|Small tweed combo. Warm cleans that break up into gritty overdrive.|Clean, blues and indie guitars.
+UAD|Ampeg SVT-VR Classic|Amp|Classic bass amp head with strong low-mid growl and tone controls.|Bass guitar.
+UAD|Antares Auto-Tune Realtime|Vocal|Real-time pitch correction. Retune speed sets how natural or robotic it sounds.|Vocal tuning and the classic effect.
+FabFilter|Pro-Q 3 / 4|EQ|Surgical EQ with dynamic bands, linear phase, mid/side and a live spectrum.|Fixing resonances and detailed mixing.
+FabFilter|Pro-C 2|Compressor|Compressor with many styles (Clean, Classic, Opto, Vocal, Punch, Pump) and a clear level display.|Vocals, drums, almost anything.
+FabFilter|Pro-L 2|Limiter|True-peak limiter with several styles and loudness metering.|Mastering and final loudness.
+FabFilter|Pro-R|Reverb|Natural reverb with a Decay Rate EQ that sets decay time per frequency.|Smooth, controllable space.
+FabFilter|Pro-DS|Vocal|De-esser that reduces harsh S sounds, with single-band or split-band modes.|Vocals.
+FabFilter|Pro-G|Utility|Gate and expander with sidechain filtering and lookahead.|Cleaning drums and noisy guitars.
+FabFilter|Pro-MB|Compressor|Multiband compressor and expander with dynamic EQ-like control.|Taming parts of a vocal, mastering.
+FabFilter|Saturn 2|Saturation|Multiband distortion with many styles. Add warmth or grit per frequency band.|Warmth, grit, parallel saturation.
+FabFilter|Timeless 3|Delay|Tape-style delay with filtering and modulation, plus a visual patch panel.|Creative and vintage delays.
+FabFilter|Volcano 3|Creative|Filter plugin with modulation and a wide range of filter types.|Filter sweeps and sound design.
+Waves|CLA-76|Compressor|Waves' 1176-style FET compressor with fast attack, ratio buttons and Chris Lord-Alge presets.|Vocals, drums, guitars.
+Waves|CLA-2A|Compressor|LA-2A-style optical compressor for smooth leveling.|Vocals and bass.
+Waves|Renaissance Compressor|Compressor|Compressor with optical and electro modes. Smooth and easy to dial.|Vocals, acoustic guitar, bass.
+Waves|SSL G-Master Buss Compressor|Compressor|Emulates the SSL G bus compressor for glue.|Mix bus and drum bus.
+Waves|PuigTec EQs|EQ|Emulates the Pultec EQP-1A and MEQ-5 with smooth, musical boosts.|Vocal air, bass weight, mix bus.
+Waves|Scheps 73|EQ|1073-style preamp and EQ with a warm, forward tone.|Vocals, guitars, drums.
+Waves|Vocal Rider|Vocal|Automatically rides the vocal level so it stays even without heavy compression.|Lead vocals.
+Waves|RVox|Vocal|Simple vocal compressor with a built-in gate. Few controls, quick results.|Vocals.
+Waves|Renaissance DeEsser|Vocal|De-esser for reducing harsh sibilance.|Vocals.
+Waves|H-Delay|Delay|Hybrid delay with analog-style filtering and modulation.|Vocals, guitars, synths.
+Waves|H-Reverb|Reverb|Hybrid reverb mixing algorithmic and sampled spaces.|All-round reverb.
+Waves|Abbey Road Plates|Reverb|Plate reverbs modeled on the Abbey Road plates.|Vocals, snare, guitars.
+Waves|J37 Tape|Saturation|Emulates the Abbey Road J37 tape machine for tape warmth and compression.|Drums, bass, mix bus.
+Waves|L2 Ultramaximizer|Limiter|Classic peak limiter that raises loudness with a simple threshold and ceiling.|Mastering loudness.
+Waves|MaxxBass|Creative|Adds bass harmonics so low notes stay audible on small speakers.|Bass and kick on phones and laptops.
+Waves|Waves Tune Real-Time|Vocal|Real-time pitch correction with adjustable speed.|Vocal tuning.
+Soundtoys|Decapitator|Saturation|Analog saturation with five styles plus drive, tone and punish controls.|Warmth and grit on drums, bass, vocals.
+Soundtoys|EchoBoy|Delay|Delay with many echo styles (tape, analog, digital), saturation, filters and ducking.|Vocals, guitars, any delay job.
+Soundtoys|Little AlterBoy|Vocal|Pitch and formant shifter. Move pitch and voice character independently.|Creative vocal effects and harmonies.
+Soundtoys|Crystallizer|Creative|Granular pitch-shifting echo with reverse repeats.|Ambient, shimmering effects.
+Soundtoys|Devil-Loc Deluxe|Compressor|Crushing compressor that adds heavy, gritty squeeze.|Drums and room mics, parallel crush.
+Soundtoys|FilterFreak|Creative|Analog-style filter driven by envelope or LFO.|Filter sweeps, movement.
+Soundtoys|MicroShift|Creative|Stereo widener using tiny pitch shifts, like a subtle chorus.|Widening vocals and guitars.
+Soundtoys|PhaseMistress|Creative|Analog-style phaser with several vintage modes.|Guitars, keys, drum loops.
+Soundtoys|Tremolator|Creative|Tremolo with a rhythmic, tempo-synced pattern editor.|Guitar and keys movement.
+Soundtoys|Radiator|Saturation|Console-style tube saturation with simple tone controls.|Warmth on drums, bass, buses.
+Others|iZotope Ozone|Mastering|All-in-one mastering suite with EQ, dynamics, imager and maximizer. Master Assistant gives a starting point.|Mastering and final polish.
+Others|iZotope Neutron|Channel|Mixing suite with Mix Assistant, masking meter, EQ, compressor and transient shaper.|Fixing clashing instruments quickly.
+Others|iZotope RX|Utility|Audio repair tools: denoise, de-click, de-reverb and spectral editing.|Cleaning noisy recordings.
+Others|iZotope Nectar|Vocal|Vocal channel suite with EQ, compression, de-ess, pitch and effects.|Quick lead vocal chains.
+Others|Slate Digital Virtual Mix Rack|Channel|Modular rack of console, EQ, compressor and tape modules.|Building a custom channel chain.
+Others|Slate Digital FG-X|Mastering|Mastering processor with a limiter and dynamics for loudness and tone.|Mastering loudness.
+Others|Valhalla VintageVerb|Reverb|Reverb with classic 70s and 80s algorithms. Lush, simple and affordable.|Vocals, synths, guitars.
+Others|Valhalla Supermassive|Reverb|Free reverb and delay for huge, ambient spaces.|Ambient and cinematic effects.
+Others|Valhalla Delay|Delay|Delay with tape, BBD, digital and other modes.|Vocals, guitars, creative delay.
+Others|Native Instruments Guitar Rig|Amp|Amp, cabinet and effects simulator with many ready presets.|Direct-recorded guitar and bass tones.
+Others|Neural DSP Archetype|Amp|High-quality amp models with cabinet simulation and effects.|Modern rock, metal and clean tones.
+Others|Positive Grid BIAS FX 2|Amp|Flexible amp and pedal modeling with shareable tones.|Custom guitar rigs.
+Others|IK Multimedia AmpliTube 5|Amp|Guitar and bass amps, cabs and pedals in a modular rig.|Guitar and bass tone building.
+Others|Celemony Melodyne|Vocal|Note-level editing of pitch and timing.|Detailed vocal tuning.
+Others|Eventide Blackhole|Reverb|Huge, otherworldly reverb with gravity and modulation controls.|Cinematic, ambient effects.`.split('\n').map(r=>{const[a,b,c,d,e]=r.split('|');return{k:a+'|'+b,b:a,n:b,c,h:d,f:e}});
+let PU=ld('plu',{}),PC=ld('plc',[]);const PF={br:'All',cat:'All',q:'',open:null};
+const PBR=['All','My plugins','UAD','FabFilter','Waves','Soundtoys','Others','My own'];
+const plAll=()=>PLG.concat(PC.map(x=>({k:'c|'+x.id,b:'My own',n:x.n,c:x.c,h:x.t,f:'',cu:x.id})));
+function rPg(){const all=plAll(),mine=all.filter(p=>PU[p.k]&&PU[p.k].u).length,cats=[...new Set(all.map(p=>p.c))].sort();
+ $('#pgsub').textContent=`${all.length} plugins · ${mine} marked as yours. Tap a plugin to see how it works, and tap Mine to add it to your list.`;
+ $('#pgbr').innerHTML=PBR.map(b=>`<button class='ch${b===PF.br?' on':''}' data-b='${b}' style='flex:none;padding:8px 12px;min-height:38px'>${b}</button>`).join('');
+ $('#pgct').innerHTML='<option>All</option>'+cats.map(c=>`<option${c===PF.cat?' selected':''}>${esc(c)}</option>`).join('');
+ const q=PF.q,list=all.filter(p=>(PF.br==='All'||(PF.br==='My plugins'?PU[p.k]&&PU[p.k].u:p.b===PF.br))&&(PF.cat==='All'||p.c===PF.cat)&&(!q||(p.n+' '+p.b+' '+p.c+' '+p.h+' '+p.f).toLowerCase().includes(q)));
+ const row=p=>{const u=PU[p.k]&&PU[p.k].u,o=PF.open===p.k;return `<div class='pg'><div class='pgh' data-t='${esc(p.k)}'><div><b>${esc(p.n)}</b><small>${esc(p.b)} · ${esc(p.c)}</small></div><button class='ub${u?' on':''}' data-u='${esc(p.k)}'>${u?'✓ Mine':'+ Mine'}</button></div>${o?`<div class='pgb'><span class='mut' style='font-size:13px'>How it works</span><p>${esc(p.h)}</p>${p.f?`<span class='mut' style='font-size:13px'>Best for</span><p>${esc(p.f)}</p>`:''}<input type='text' data-nt='${esc(p.k)}' placeholder='My note (settings, tips…)' value='${esc((PU[p.k]&&PU[p.k].n)||'')}'>${p.cu?`<button data-dl='${p.cu}' style='margin-top:8px;width:100%'>Remove this plugin</button>`:''}</div>`:''}</div>`};
+ let h='';const order=PF.br==='My plugins'||PF.br==='All'?PBR.slice(2):[PF.br];
+ order.forEach(b=>{const l=list.filter(p=>p.b===b);if(l.length)h+=`<div class='brand'>${b.toUpperCase()} · ${l.length}</div><div class='card'>${l.map(row).join('')}</div>`});
+ $('#pgl').innerHTML=h||`<div class='card'><p class='mut c' style='margin:0'>${PF.br==='My plugins'?'Nothing here yet. Tap + Mine on the plugins you use.':'No plugins match.'}</p></div>`;
+ $('#pgc').innerHTML=cats.map(c=>`<option>${esc(c)}</option>`).join('')}
+$('#pgq').oninput=e=>{PF.q=e.target.value.trim().toLowerCase();rPg()};
+$('#pgct').onchange=e=>{PF.cat=e.target.value;rPg()};
+$('#pgbr').onclick=e=>{if(e.target.dataset.b){PF.br=e.target.dataset.b;rPg()}};
+$('#pgl').onclick=e=>{const d=e.target.dataset;
+ if(d.u!==undefined){const o=PU[d.u]||(PU[d.u]={});o.u=o.u?0:1;sv('plu',PU);rPg()}
+ else if(d.dl!==undefined){PC=PC.filter(x=>String(x.id)!==d.dl);sv('plc',PC);rPg()}
+ else if(e.target.closest('.pgh')){const k=e.target.closest('.pgh').dataset.t;PF.open=PF.open===k?null:k;rPg()}};
+$('#pgl').onchange=e=>{const k=e.target.dataset.nt;if(k===undefined)return;const o=PU[k]||(PU[k]={});o.n=e.target.value.trim();sv('plu',PU)};
+$('#pgadd').onclick=()=>{const n=$('#pgn').value.trim();if(!n)return;const id=Date.now();PC.push({id,n,c:$('#pgc').value||'Other',t:$('#pgt').value.trim()});PU['c|'+id]={u:1};sv('plc',PC);sv('plu',PU);$('#pgn').value='';$('#pgt').value='';PF.br='My plugins';rPg()};
 /* more menu */
-const MOI=[['ai','TL AI','Free AI help for mixing, tone and chords'],['sc','Scales and fretboard','Pentatonic, modes and more'],['sl','Setlist','Songs, lyrics and stage mode'],['an','Song Analyzer','Tempo, key and chords from a song'],['mt','Loop sketchpad','Record layers over a click'],['rc','Recorder','Capture riffs and ideas'],['pr','Practice log','Timer, daily goal and streak'],['se','Settings','Colors, text size, backup']];
+const MOI=[['ai','TL AI','Free AI help for mixing, tone and chords'],['pg','Plugin guide','UAD, FabFilter, Waves, Soundtoys and more'],['sc','Scales and fretboard','Pentatonic, modes and more'],['sl','Setlist','Songs, lyrics and stage mode'],['an','Song Analyzer','Tempo, key and chords from a song'],['mt','Loop sketchpad','Record layers over a click'],['rc','Recorder','Capture riffs and ideas'],['pr','Practice log','Timer, daily goal and streak'],['se','Settings','Colors, text size, backup']];
 $('#mol').innerHTML=MOI.map(([v,t,s])=>`<div class='item' data-go='${v}' style='cursor:pointer'><div><b>${t}</b><small>${s}</small></div><span class='mut'>›</span></div>`).join('');
 $('#mol').onclick=e=>{const r=e.target.closest('[data-go]');if(r)show(r.dataset.go)};
 /* scales */
@@ -684,7 +795,7 @@ function rSet(){$('#sth').innerHTML=chp([['Auto','auto'],['Light','light'],['Dar
 $('#se').onclick=e=>{const d=e.target.dataset;if(d.dl!==undefined){pl.splice(+d.dl,1);sv('plinks',pl);rPl();return}if(d.k===undefined)return;
  if(d.k==='theme'){if(d.v==='auto')delete R.dataset.theme;else R.dataset.theme=d.v;sv('theme',d.v==='auto'?'':d.v)}else{if(d.k==='bg'&&d.v==='photo'){let h='';try{h=localStorage.getItem('bgimg')}catch(x){}if(!h){$('#bgf').click();return}}S[d.k]=(d.k==='ac'||d.k==='bg')?d.v:+d.v;applyS()}rSet()};
 $('#sgl').onchange=()=>{S.goal=Math.max(1,+$('#sgl').value||30);applyS();rLogs()};
-const BK=['bpm','sig','songs','logs','favs','set','theme','plinks','a4','mx'];
+const BK=['bpm','sig','songs','logs','favs','set','theme','plinks','a4','mx','plu','plc'];
 $('#bcopy').onclick=async()=>{const o={};BK.forEach(k=>{try{const v=localStorage.getItem(k);if(v!==null)o[k]=JSON.parse(v)}catch(e){}});const t=JSON.stringify(o);$('#btx').value=t;$('#btx').select();let ok=0;try{await navigator.clipboard.writeText(t);ok=1}catch(e){}$('#bmsg').textContent=ok?'Backup copied. Paste it into Notes or Messages to keep it safe.':'Select all the text above, copy it and keep it somewhere safe.'};
 $('#brest').onclick=()=>{try{const o=JSON.parse($('#btx').value);let n=0;BK.forEach(k=>{if(k in o){sv(k,o[k]);n++}});if(!n)throw 0;$('#bmsg').textContent='Restored. Reloading…';setTimeout(()=>location.reload(),600)}catch(e){$('#bmsg').textContent='That doesn’t look like a backup. Paste the full backup text first.'}};
 let rz=0;$('#rst').onclick=()=>{if(!rz){rz=1;$('#rst').textContent='Tap again to erase everything';setTimeout(()=>{rz=0;$('#rst').textContent='Reset all data'},4000);return}BK.forEach(k=>{try{localStorage.removeItem(k)}catch(e){}});location.reload()};
