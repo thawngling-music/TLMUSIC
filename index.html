@@ -132,6 +132,17 @@ nav svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.7;st
 #go{min-height:60px;font-size:calc(18px*var(--k,1));letter-spacing:.02em}
 #needle.ok{filter:drop-shadow(0 0 6px var(--ac))}.lamp.on{box-shadow:0 0 14px color-mix(in srgb,var(--ac) 55%,transparent)}
 .item{padding:14px 0}.item small{margin-top:2px}
+
+.dz{display:none;border:2px dashed var(--line);border-radius:18px;padding:24px 12px;text-align:center;font-weight:600;margin-bottom:12px;cursor:pointer}.dz small{display:block;font-weight:400;color:var(--mut);margin-top:4px}
+.kb{display:none;font-size:12px;margin:8px 0 0}
+body.drag::after{content:'Drop an audio file to analyze';position:fixed;inset:12px;border:2px dashed var(--ac);border-radius:28px;background:color-mix(in srgb,var(--bg) 72%,transparent);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:600;z-index:100;pointer-events:none}
+:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
+@media(hover:hover) and (pointer:fine){.dz,.kb{display:block}button:not(:disabled):hover{filter:brightness(1.1)}.item[data-go]:hover,.pgh:hover{background:color-mix(in srgb,var(--ac) 8%,transparent)}}
+@media(min-width:900px){body{max-width:1080px}nav{max-width:600px;margin-left:auto;margin-right:auto}
+#me,#tn,#cd,#mt,#pc,#an{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;align-items:start}
+#me>.card,#tn>.card,#cd>.card,#mt>.card,#pc>.card,#an>.card{margin-bottom:0}
+#cd>*:not(.card),#mt>*:not(.card){grid-column:1/-1}
+#se,#mo,#sl,#pj,#pr,#rc,#ai,#ab,#pg,#mx{max-width:680px;margin-left:auto;margin-right:auto}}
 </style></head><body>
 <div id='bg'></div>
 <header><h1><img class="logo" src="icon-192.png" alt="">THAWNG LING MUSIC</h1><div style="display:flex;gap:8px;align-items:center"><button id="theme" aria-label="Switch theme">◐</button></div></header>
@@ -177,7 +188,7 @@ nav svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.7;st
   <label>Volume</label><input type="range" id="vol" min="0" max="100" value="80">
   <button id="tap" class="big" style="margin-top:10px">Tap tempo</button>
   <label>Speed trainer: raise the tempo every few bars until the max</label><div class='row2'><input type='number' id='trs' value='5' min='1' max='50'><input type='number' id='trn' value='4' min='1' max='32'><input type='number' id='trm' value='160' min='40' max='300'></div><div class='row2'><small class='c'>+BPM</small><small class='c'>every bars</small><small class='c'>max BPM</small></div><button id='tro' class='big' style='margin-top:10px'>Speed trainer: Off</button>
-  <p class="mut" style="font-size:calc(13px*var(--k,1));margin:12px 0 0">In 6/8 the tempo counts the dotted quarter note.</p>
+  <p class="mut" style="font-size:calc(13px*var(--k,1));margin:12px 0 0">In 6/8 the tempo counts the dotted quarter note.</p><p class='kb mut'>Keyboard: Space start/stop · ← → tempo (Shift for ±5) · T tap · 1–5 pages</p>
  </div>
 </section>
 
@@ -232,8 +243,8 @@ nav svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.7;st
 <section id='an' hidden>
  <div class='card'>
   <div class='ttl'>Song Analyzer</div>
-  <p class='mut c' style='margin:6px 0 14px'>Pick a song from your iPhone or let the mic listen. It estimates tempo, key and chords.</p>
-  <button class='pri big' id='anf'>Choose song file</button><input type='file' id='anfi' accept='audio/*' hidden>
+  <p class='mut c' style='margin:6px 0 14px'>Choose or drop a song to see its tempo, key, chords, loudness and file details, or let the mic listen.</p>
+  <div id='andz' class='dz'>Drop an audio file here<small>WAV, MP3, M4A, AIFF</small></div><button class='pri big' id='anf'>Choose audio file</button><input type='file' id='anfi' accept='audio/*' hidden>
   <button class='big' id='anm' style='margin-top:8px'>Listen with microphone (20 s)</button>
   <div class='c mut' id='ans' style='margin-top:12px;min-height:1.4em'></div>
  </div>
@@ -309,7 +320,7 @@ nav svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.7;st
 <section id='mo' hidden><div id='mol'></div></section>
 <section id='sc' hidden><div class='card'><div class='row2'><select id='sroot'></select><select id='sscale'></select></div><div style='overflow-x:auto;margin-top:14px'><div id='sboard' style='min-width:560px'></div></div><div class='c mut' id='snotes' style='margin:10px 0'></div><button class='pri big' id='splay'>Play scale</button></div></section>
 <section id='rc' hidden><div class='card c'><div class='num' id='rt' style='font-size:calc(64px*var(--k,1))'>00:00</div><button class='pri big' id='rgo' style='margin-top:14px'>Record</button><p class='mut' id='rh' style='font-size:calc(13px*var(--k,1));margin:10px 0 0'>Records from your microphone and saves on this phone.</p></div><div class='card' id='rl'></div></section>
-<section id='se' hidden><div class='card' style='padding:14px 16px'><div class='item mr' id='gopf' style='cursor:pointer;padding:0;border:0'><img src='icon-192.png' alt='' style='width:58px;height:58px;border-radius:16px;flex:none'><div style='flex:1'><b style='font-size:18px'>Thawng Ling</b><small>Music Producer · Guitarist<br>View portfolio</small></div><span class='mut'>›</span></div></div><div class='sh'>Appearance</div><div class='card'><div class='sec' style='margin-top:0'>Theme</div><div class='row2' id='sth'></div><div class='sec'>Accent color</div><div class='row2' id='sac' style='flex-wrap:wrap'></div><div class='sec'>Text size</div><div id='sfs'></div><div class='sec'>Background</div><div class='row2' id='sbg' style='flex-wrap:wrap'></div><div class='row2' style='margin-top:8px'><button id='bgpick'>Choose photo from iPhone</button><input type='file' id='bgf' accept='image/*' hidden></div><div class='sec'>Photo dimming</div><input type='range' id='bgdim' min='0' max='85'><div class='sec'>Glass effect</div><div class='row2' id='sgls'></div><div class='sec'>Swipe between pages</div><div class='row2' id='ssw'></div></div><div class='sh'>Sound and practice</div><div class='card'><div class='sec' style='margin-top:0'>Metronome click sound</div><div class='row2' id='ssn'></div><div class='sec'>Keep screen awake (metronome, drums, stage)</div><div class='row2' id='swk'></div><div class='sec'>Daily practice goal (minutes)</div><input type='number' id='sgl' min='1'></div><div class='sh'>Data</div><div class='card'><div class='sec' style='margin-top:0'>Backup and restore</div><textarea id='btx' style='min-height:90px' placeholder='Backup text appears here. To restore, paste a backup here.'></textarea><div class='row2' style='margin-top:8px'><button class='pri' id='bcopy'>Copy backup</button><button id='brest'>Restore</button></div><p class='mut' id='bmsg' style='font-size:calc(13px*var(--k,1));margin:10px 0 0'>Covers songs, chords, practice log, settings and links. Recordings stay on this phone and aren’t included.</p></div><button id='rst' class='big'>Reset all data</button><p class='c mut' style='font-size:12px;margin:14px 0 0'>THAWNG LING MUSIC · version 14</p></section>
+<section id='se' hidden><div class='card' style='padding:14px 16px'><div class='item mr' id='gopf' style='cursor:pointer;padding:0;border:0'><img src='icon-192.png' alt='' style='width:58px;height:58px;border-radius:16px;flex:none'><div style='flex:1'><b style='font-size:18px'>Thawng Ling</b><small>Music Producer · Guitarist<br>View portfolio</small></div><span class='mut'>›</span></div></div><div class='sh'>Appearance</div><div class='card'><div class='sec' style='margin-top:0'>Theme</div><div class='row2' id='sth'></div><div class='sec'>Accent color</div><div class='row2' id='sac' style='flex-wrap:wrap'></div><div class='sec'>Text size</div><div id='sfs'></div><div class='sec'>Background</div><div class='row2' id='sbg' style='flex-wrap:wrap'></div><div class='row2' style='margin-top:8px'><button id='bgpick'>Choose photo from iPhone</button><input type='file' id='bgf' accept='image/*' hidden></div><div class='sec'>Photo dimming</div><input type='range' id='bgdim' min='0' max='85'><div class='sec'>Glass effect</div><div class='row2' id='sgls'></div><div class='sec'>Swipe between pages</div><div class='row2' id='ssw'></div></div><div class='sh'>Sound and practice</div><div class='card'><div class='sec' style='margin-top:0'>Metronome click sound</div><div class='row2' id='ssn'></div><div class='sec'>Keep screen awake (metronome, drums, stage)</div><div class='row2' id='swk'></div><div class='sec'>Daily practice goal (minutes)</div><input type='number' id='sgl' min='1'></div><div class='sh'>Data</div><div class='card'><div class='sec' style='margin-top:0'>Backup and restore</div><textarea id='btx' style='min-height:90px' placeholder='Backup text appears here. To restore, paste a backup here.'></textarea><div class='row2' style='margin-top:8px'><button class='pri' id='bcopy'>Copy backup</button><button id='brest'>Restore</button></div><p class='mut' id='bmsg' style='font-size:calc(13px*var(--k,1));margin:10px 0 0'>Covers songs, chords, practice log, settings and links. Recordings stay on this phone and aren’t included.</p></div><button id='rst' class='big'>Reset all data</button><p class='c mut' style='font-size:12px;margin:14px 0 0'>THAWNG LING MUSIC · version 15</p></section>
 <section id="sl" hidden>
  <div id="list" class="card"></div>
  <button class="pri big" id="add">Add song</button>
@@ -557,17 +568,18 @@ async function analyze(buf,cb){const tick=async t=>{if(cb)await cb(t)};
  const x=new Float32Array(n),d0=buf.getChannelData(0),d1=nch>1?buf.getChannelData(1):null;
  for(let i=0;i<n;i++){let a=0;for(let j=0;j<f;j++){const k=i*f+j;a+=d0[k]+(d1?d1[k]:0)}x[i]=a/(f*(d1?2:1))}
  await tick('Finding tempo…');
- const N1=1024,H1=256,F1=mkFFT(N1),w1=hann(N1),re=new Float64Array(N1),im=new Float64Array(N1),pv=new Float64Array(N1/2),km=Math.floor(4000/(sr/N1)),fl=[];
+ const N1=1024,H1=128,F1=mkFFT(N1),w1=hann(N1),re=new Float64Array(N1),im=new Float64Array(N1),pv=new Float64Array(N1/2),km=Math.floor(4000/(sr/N1)),fl=[];
  for(let p=0;p+N1<=n;p+=H1){for(let i=0;i<N1;i++){re[i]=x[p+i]*w1[i];im[i]=0}F1(re,im);let s=0;for(let k=1;k<km;k++){const m=Math.log(1+100*Math.hypot(re[k],im[k])),d=m-pv[k];if(d>0)s+=d;pv[k]=m}fl.push(s)}
  const o=new Float64Array(fl.length),W=Math.round(sr/H1),cu=[0];{let c=0;fl.forEach(v=>{c+=v;cu.push(c)});for(let i=0;i<fl.length;i++){const a=Math.max(0,i-W),b=Math.min(fl.length,i+W+1);o[i]=Math.max(0,fl[i]-(cu[b]-cu[a])/(b-a))}}
- const fps=sr/H1;let bb=100,bs=-1;
- for(let b=60;b<=200;b+=.5){let s=0;[1,2,4].forEach(m=>{const L=fps*60/b*m;let a=0,cnt=0;for(let t=0;t+L+2<o.length;t++){const i=t+L,i0=Math.floor(i),q=i-i0;a+=o[t]*(o[i0]*(1-q)+o[i0+1]*q);cnt++}s+=(cnt?a/cnt:0)/m});s*=Math.exp(-.5*(Math.log2(b/115)/.8)**2);if(s>bs){bs=s;bb=b}}
+ const fps=sr/H1,score=(b,np)=>{let s=0;[1,2,4].forEach(m=>{const L=fps*60/b*m;let a=0,cnt=0;for(let t=0;t+L+2<o.length;t++){const i=t+L,i0=Math.floor(i),q=i-i0;a+=o[t]*(o[i0]*(1-q)+o[i0+1]*q);cnt++}s+=(cnt?a/cnt:0)/m});return np?s:s*Math.exp(-.5*(Math.log2(b/115)/.8)**2)};
+ let bb=100,bs=-1,sm=0,cn=0;for(let b=60;b<=200;b+=.5){const v=score(b);sm+=v;cn++;if(v>bs){bs=v;bb=b}}
+ const conf=bs/((sm/cn)||1),b0=bb;bs=score(b0,1);for(let b=b0-.8;b<=b0+.8;b+=.05){const v=score(b,1);if(v>bs){bs=v;bb=b}}
  await tick('Detecting key…');
  const N2=4096,H2=2048,F2=mkFFT(N2),w2=hann(N2),r2=new Float64Array(N2),i2=new Float64Array(N2),bw=sr/N2,k0=Math.ceil(70/bw),k1=Math.floor(2000/bw),mp=new Int8Array(N2/2);
  for(let k=k0;k<=k1;k++)mp[k]=((Math.round(12*Math.log2(k*bw/440))+69)%12+12)%12;
  const fr=[],tot=new Float64Array(12);
  for(let p=0;p+N2<=n;p+=H2){for(let i=0;i<N2;i++){r2[i]=x[p+i]*w2[i];i2[i]=0}F2(r2,i2);const c=new Float64Array(12);for(let k=k0;k<=k1;k++)c[mp[k]]+=Math.sqrt(Math.hypot(r2[k],i2[k]));let e=0;for(let q=0;q<12;q++){e+=c[q];tot[q]+=c[q]}fr.push({t:(p+N2/2)/sr,c,e})}
- let kb=-9,key={r:0,minor:0};for(let r=0;r<12;r++){const rot=Array.from({length:12},(_,i)=>tot[(r+i)%12]);[[KMJ,0],[KMN,1]].forEach(([pf,mn])=>{const v=cor(rot,pf);if(v>kb){kb=v;key={r,minor:mn}}})}
+ const kl=[];for(let r=0;r<12;r++){const rot=Array.from({length:12},(_,i)=>tot[(r+i)%12]);[[KMJ,0],[KMN,1]].forEach(([pf,mn])=>kl.push({v:cor(rot,pf),r,minor:mn}))}kl.sort((x,y)=>y.v-x.v);const key={r:kl[0].r,minor:kl[0].minor},kb=kl[0].v-kl[1].v,k2={r:kl[1].r,minor:kl[1].minor};
  await tick('Reading chords…');
  let B=60/bb;while(B<.45)B*=2;const dur=n/sr,nw=Math.ceil(dur/B),ac=Array.from({length:nw},()=>({c:new Float64Array(12),n:0,e:0}));
  fr.forEach(q=>{const w=Math.min(nw-1,Math.floor(q.t/B));for(let i=0;i<12;i++)ac[w].c[i]+=q.c[i];ac[w].n++;ac[w].e+=q.e});
@@ -577,19 +589,70 @@ async function analyze(buf,cb){const tick=async t=>{if(cb)await cb(t)};
  for(let z=0;z<2;z++)for(let i=1;i<lab.length-1;i++)if(lab[i]!==lab[i-1]&&lab[i-1]===lab[i+1])lab[i]=lab[i-1];
  const ch=[],cnt={};let pl=-2;lab.forEach((l,i)=>{if(l<0)return;const nm=NN[l>>1]+(l&1?'m':'');cnt[nm]=(cnt[nm]||0)+1;if(l!==pl)ch.push({t:i*B,n:nm});pl=l});
  const top=Object.keys(cnt).sort((a,b)=>cnt[b]-cnt[a]).slice(0,6);
- return{dur:buf.duration,bpm:Math.round(bb*2)/2,key,ch,top}}
+ return{dur:buf.duration,bpm:Math.round(bb*10)/10,conf,key,kconf:kb,k2,ch,top}}
+function parseWav(ab){try{const v=new DataView(ab);if(v.byteLength<44||v.getUint32(0)!==0x52494646||v.getUint32(8)!==0x57415645)return null;
+ const tg=o=>String.fromCharCode(v.getUint8(o),v.getUint8(o+1),v.getUint8(o+2),v.getUint8(o+3)),tx=(o,n)=>new TextDecoder().decode(new Uint8Array(ab,o,Math.max(0,Math.min(n,ab.byteLength-o)))).replace(/\0+$/,'').trim(),r={};let o=12;
+ while(o+8<=v.byteLength){const id=tg(o),sz=v.getUint32(o+4,true),d=o+8;
+  if(id==='fmt '){const f=v.getUint16(d,true);r.fmt=f===1?'PCM':f===3?'Float':f===0xFFFE?'Extensible':'Codec '+f;r.ch=v.getUint16(d+2,true);r.sr=v.getUint32(d+4,true);r.bits=v.getUint16(d+14,true)}
+  else if(id==='acid'&&sz>=24){const fl=v.getUint32(d,true),t=v.getFloat32(d+20,true);if(t>20&&t<400)r.bpm=Math.round(t*100)/100;if(fl&2)r.root=v.getUint16(d+4,true)}
+  else if(id==='smpl'&&sz>=16)r.unity=v.getUint32(d+12,true);
+  else if(id==='LIST'&&tg(d)==='INFO'){let p=d+4;const e=d+sz;while(p+8<=e&&p+8<=v.byteLength){const k=tg(p),n=v.getUint32(p+4,true),t=tx(p+8,n);if(k==='INAM')r.title=t;else if(k==='IART')r.artist=t;else if(k==='ISFT')r.soft=t;else if(k==='ICMT')r.cmt=t;p+=8+n+(n&1)}}
+  else if(id==='iXML'){const x=tx(d,Math.min(sz,20000)),m=x.match(/<(?:BPM|TEMPO)>\s*([\d.]+)/i),k=x.match(/<KEY>\s*([^<]+)/i);if(m)r.bpmx=+m[1];if(k)r.keyx=k[1].trim()}
+  o=d+sz+(sz&1)}
+ return r}catch(e){return null}}
+function loud(buf){const sr=buf.sampleRate,nc=Math.min(2,buf.numberOfChannels),n=buf.length,Hn=Math.round(.1*sr),segN=Math.floor(n/Hn),
+ K1=Math.tan(Math.PI*1681.974450955533/sr),Q1=.7071752369554196,Vh=10**(3.999843853973347/20),Vb=Vh**.499666774155,d1=1+K1/Q1+K1*K1,
+ B1=[(Vh+Vb*K1/Q1+K1*K1)/d1,2*(K1*K1-Vh)/d1,(Vh-Vb*K1/Q1+K1*K1)/d1],A1=[2*(K1*K1-1)/d1,(1-K1/Q1+K1*K1)/d1],
+ K2=Math.tan(Math.PI*38.13547087602444/sr),Q2=.5003270373238773,d2=1+K2/Q2+K2*K2,B2=[1,-2,1],A2=[2*(K2*K2-1)/d2,(1-K2/Q2+K2*K2)/d2];
+ let pk=0,ss=0,cl=0;const seg=[];
+ for(let ch=0;ch<nc;ch++){const d=buf.getChannelData(ch),e=new Float64Array(segN);let x1=0,x2=0,y1=0,y2=0,z1=0,z2=0,u1=0,u2=0;
+  for(let i=0;i<segN*Hn;i++){const x=d[i],ax=Math.abs(x);if(ax>pk)pk=ax;if(ax>=.9999)cl++;ss+=x*x;const y=B1[0]*x+B1[1]*x1+B1[2]*x2-A1[0]*y1-A1[1]*y2;x2=x1;x1=x;y2=y1;y1=y;const z=B2[0]*y+B2[1]*u1+B2[2]*u2-A2[0]*z1-A2[1]*z2;u2=u1;u1=y;z2=z1;z1=z;e[(i/Hn)|0]+=z*z}
+  seg.push(e)}
+ const P=[];for(let j=0;j+4<=segN;j++){let p=0;for(let ch=0;ch<nc;ch++){let q=0;for(let k=0;k<4;k++)q+=seg[ch][j+k];p+=q/(4*Hn)}P.push(p)}
+ const L=p=>-.691+10*Math.log10(p),g1=P.filter(p=>p>0&&L(p)>-70);let lufs=-Infinity;if(g1.length){const th=L(g1.reduce((x,y)=>x+y,0)/g1.length)-10,g2=g1.filter(p=>L(p)>th);if(g2.length)lufs=L(g2.reduce((x,y)=>x+y,0)/g2.length)}
+ return{lufs,peak:pk>0?20*Math.log10(pk):-Infinity,rms:ss>0?10*Math.log10(ss/(nc*segN*Hn)):-Infinity,clip:cl}}
 let AN=null;
-function rAn(){if(!AN){$('#anout').innerHTML='';return}const a=AN,mm=t=>Math.floor(t/60)+':'+String(Math.floor(t%60)).padStart(2,'0'),k=a.key,kn=NN[k.r]+(k.minor?' minor':' major'),rel=k.minor?NN[(k.r+3)%12]+' major':NN[(k.r+9)%12]+' minor';
- const alts=[...new Set([a.bpm/2,a.bpm*2].map(x=>Math.round(x*2)/2).filter(x=>x>=40&&x<=240))];
- $('#anout').innerHTML=`<div class='card c'><div class='mut'>Tempo</div><div class='num' style='font-size:64px'>${a.sel}</div><div class='mut'>BPM · tap another if it feels double or half</div><div class='row2' style='margin-top:10px'>${[a.bpm,...alts].sort((x,y)=>x-y).map(x=>`<button class='ch${x===a.sel?' on':''}' data-ab='${x}'>${x}</button>`).join('')}</div><div class='sec'>Key</div><div style='font-size:30px;font-weight:300'>${kn}</div><div class='mut'>Relative: ${rel}</div></div>
- <div class='card'><b>Chords</b><div class='mut' style='margin-top:4px'>Most used: ${a.top.join(' · ')||'–'}</div><div style='display:flex;flex-wrap:wrap;gap:8px;margin-top:12px'>${a.ch.slice(0,150).map(c=>`<div class='cc'><b>${c.n}</b><small>${mm(c.t)}</small></div>`).join('')}</div></div>
- <div class='card'><button class='pri big' data-act='met'>Use in Metronome</button><button class='big' data-act='mix' style='margin-top:8px'>Use in Mix calculator</button><button class='big' data-act='set' style='margin-top:8px'>Add to Setlist</button><button class='big' data-act='ai' style='margin-top:8px'>Ask TL AI about this song</button><button class='big' data-act='pj' style='margin-top:8px'>Save as Project</button></div>
- <p class='mut' style='font-size:13px;margin:4px 4px 0'>These are estimates. Check by ear, especially on songs with tempo changes or heavy effects.</p>`}
-$('#anout').onclick=e=>{const d=e.target.dataset;if(!AN)return;if(d.ab!==undefined){AN.sel=+d.ab;rAn()}else if(d.act==='met'){setBpm(AN.sel);show('me')}else if(d.act==='mix'){mxSet(AN.sel);show('mx')}else if(d.act==='pj'){const k=AN.key;pjNew({t:AN.name||'Analyzed song',bpm:Math.round(AN.sel),key:NN[k.r]+(k.minor?'m':''),nt:'Chords: '+AN.ch.map(c=>c.n).slice(0,64).join(' ')});show('pj')}else if(d.act==='ai'){const k=AN.key;aiAsk(`My song is in ${NN[k.r]+(k.minor?' minor':' major')} at ${AN.sel} BPM with chords ${AN.ch.slice(0,16).map(x=>x.n).join(' ')}. Suggest a song structure, a guitar part and a solo idea.`)}else if(d.act==='set'){const k=AN.key;songs.push({id:Date.now(),t:AN.name||'Analyzed song',k:NN[k.r]+(k.minor?'m':''),b:Math.round(AN.sel),l:'Chords: '+AN.ch.map(c=>c.n).slice(0,64).join(' ')});sv('songs',songs);rList();$('#ans').textContent='Added to your Setlist.'}};
-async function runAn(buf,name){const cb=t=>{$('#ans').textContent=t;return new Promise(r=>setTimeout(r,30))};
- try{const r=await analyze(buf,cb);r.sel=r.bpm;r.name=name;AN=r;$('#ans').textContent='Done.';rAn()}catch(e){AN=null;rAn();$('#ans').textContent=e&&e.message==='short'?'The audio is too short. Use at least 10 seconds.':'Could not analyze this audio.'}}
+const fdb=x=>isFinite(x)?x.toFixed(1):'–∞',fSz=b=>b>1e6?(b/1e6).toFixed(1)+' MB':Math.round(b/1e3)+' KB',khz=r=>(r/1000).toFixed(r%1000?1:0);
+function anFmt(i,buf){const ch=buf.numberOfChannels===1?'Mono':buf.numberOfChannels===2?'Stereo':buf.numberOfChannels+' channels',m=i.meta;if(m&&m.fmt)return`WAV · ${m.fmt}${m.bits?' '+m.bits+'-bit':''} · ${khz(m.sr)} kHz · ${ch}`;return`${(i.ext||'audio').toUpperCase()} · ${khz(buf.sampleRate)} kHz · ${ch} · about ${Math.round(i.size*8/buf.duration/1000)} kbps`}
+const knm=k=>NN[k.r]+(k.minor?' minor':' major'),lab=(v,h,m)=>v>h?'High':v>m?'Medium':'Low';
+function anReport(){const a=AN,i=a.info,L=a.ld,t=[a.name||'Song','Tempo: '+a.sel+' BPM','Key: '+knm(a.key),'Chords: '+a.ch.map(c=>c.n).slice(0,48).join(' ')];if(i)t.push('Format: '+i.fmt,'Duration: '+skF(a.dur));if(L)t.push('Loudness: '+fdb(L.lufs)+' LUFS','Peak: '+fdb(L.peak)+' dBFS');t.push('Estimated by Thawng Ling Music');return t.join('\n')}
+function rAn(){if(!AN){$('#anout').innerHTML='';return}const a=AN,i=a.info,L=a.ld,k=a.key,rel=k.minor?NN[(k.r+3)%12]+' major':NN[(k.r+9)%12]+' minor',
+ rw=(x,y)=>`<div class='item' style='padding:9px 0;gap:12px'><span class='mut'>${x}</span><b style='text-align:right;overflow-wrap:anywhere'>${y}</b></div>`;
+ let det='';if(i){const m=i.meta||{},R=[['File',esc(i.fname)],['Size',fSz(i.size)],['Format',esc(i.fmt)],['Duration',skF(a.dur)]];
+  if(L)R.push(['Loudness',fdb(L.lufs)+' LUFS'],['Peak',fdb(L.peak)+' dBFS'],['RMS',fdb(L.rms)+' dBFS'],['Crest factor',fdb(L.peak-L.rms)+' dB'],['Clipped samples',String(L.clip)]);
+  if(m.title)R.push(['Title',esc(m.title)]);if(m.artist)R.push(['Artist',esc(m.artist)]);if(m.soft)R.push(['Software',esc(m.soft)]);if(m.cmt)R.push(['Comment',esc(m.cmt)]);if(m.bpm)R.push(['Tempo in file',m.bpm+' BPM']);if(m.bpmx)R.push(['Tempo in file',m.bpmx+' BPM']);if(m.keyx)R.push(['Key in file',esc(m.keyx)]);
+  const rt=m.root!=null&&m.root>0&&m.root<128?m.root:(m.unity>0&&m.unity<128?m.unity:null);if(rt!=null)R.push(['Root note in file',NN[rt%12]+(Math.floor(rt/12)-1)]);
+  det=`<div class='card'><b>File details</b>${R.map(r=>rw(r[0],r[1])).join('')}</div>`}
+ const alts=[...new Set([a.sel,a.bpm,a.bpm/2,a.bpm*2].map(x=>Math.round(x*10)/10).filter(x=>x>=40&&x<=240))].sort((x,y)=>x-y);
+ $('#anout').innerHTML=det+`<div class='card c'><div class='mut'>Tempo${a.fromFile?' (from file data)':''}</div><div class='num' style='font-size:64px'>${a.sel}</div><div class='mut'>BPM · confidence ${a.fromFile?'exact':lab(a.conf,1.6,1.25)} · tap another if it feels double or half</div><div class='row2' style='margin-top:10px;flex-wrap:wrap'>${alts.map(x=>`<button class='ch${x===a.sel?' on':''}' data-ab='${x}'>${x}</button>`).join('')}</div><div class='sec'>Key</div><div style='font-size:30px;font-weight:300'>${knm(k)}</div><div class='mut'>Relative: ${rel} · confidence ${lab(a.kconf,.06,.02)}</div><div class='mut'>Other possibility: ${knm(a.k2)}</div></div>
+ <div class='card'><b>Chords</b><div class='mut' style='margin-top:4px'>Most used: ${a.top.join(' · ')||'–'}</div><div style='display:flex;flex-wrap:wrap;gap:8px;margin-top:12px'>${a.ch.slice(0,150).map(c=>`<div class='cc'><b>${c.n}</b><small>${skF(c.t)}</small></div>`).join('')}</div></div>
+ <div class='card'><button class='pri big' data-act='met'>Use in Metronome</button><button class='big' data-act='mix' style='margin-top:8px'>Use in Mix calculator</button>${L&&isFinite(L.lufs)?`<button class='big' data-act='lf' style='margin-top:8px'>Use loudness in LUFS calculator</button>`:''}<button class='big' data-act='set' style='margin-top:8px'>Add to Setlist</button><button class='big' data-act='ai' style='margin-top:8px'>Ask TL AI about this song</button><button class='big' data-act='pj' style='margin-top:8px'>Save as Project</button><button class='big' data-act='cp' style='margin-top:8px'>Copy report</button></div>
+ <p class='mut' style='font-size:13px;margin:4px 4px 0'>Tempo, key and chords are estimates. File details, peak and loudness are measured from the audio. Check the estimates by ear, especially on songs with tempo changes or heavy effects.</p>`}
+$('#anout').onclick=e=>{const d=e.target.dataset;if(!AN)return;const k=AN.key,ks=NN[k.r]+(k.minor?'m':'');
+ if(d.ab!==undefined){AN.sel=+d.ab;rAn()}
+ else if(d.act==='met'){setBpm(AN.sel);show('me')}
+ else if(d.act==='mix'){mxSet(AN.sel);show('mx')}
+ else if(d.act==='lf'&&AN.ld&&isFinite(AN.ld.lufs)){$('#pclf').value=AN.ld.lufs.toFixed(1);show('pc')}
+ else if(d.act==='set'){songs.push({id:Date.now(),t:AN.name||'Analyzed song',k:ks,b:Math.round(AN.sel),l:'Chords: '+AN.ch.map(c=>c.n).slice(0,64).join(' ')});sv('songs',songs);rList();$('#ans').textContent='Added to your Setlist.'}
+ else if(d.act==='pj'){pjNew({t:AN.name||'Analyzed song',bpm:Math.round(AN.sel),key:ks,nt:'Chords: '+AN.ch.map(c=>c.n).slice(0,64).join(' ')});show('pj')}
+ else if(d.act==='ai')aiAsk(`My song is in ${knm(k)} at ${AN.sel} BPM with chords ${AN.ch.slice(0,16).map(x=>x.n).join(' ')}. Suggest a song structure, a guitar part and a solo idea.`);
+ else if(d.act==='cp'){const t=anReport();if(navigator.clipboard)navigator.clipboard.writeText(t).then(()=>{$('#ans').textContent='Report copied.'}).catch(()=>{$('#ans').textContent='Could not copy.'});else $('#ans').textContent='Copy is not available here.'}};
+async function runAn(buf,name,info){const cb=t=>{$('#ans').textContent=t;return new Promise(r=>setTimeout(r,30))};
+ try{const r=await analyze(buf,cb);if(info)await cb('Measuring loudness…');r.ld=info?loud(buf):null;r.sel=r.bpm;r.name=name;r.info=info?Object.assign({},info,{fmt:anFmt(info,buf)}):null;const m=info&&info.meta;if(m&&(m.bpm||m.bpmx)){r.sel=m.bpm||m.bpmx;r.fromFile=1}AN=r;$('#ans').textContent='Done.';rAn()}
+ catch(e){AN=null;rAn();$('#ans').textContent=e&&e.message==='short'?'The audio is too short. Use at least 10 seconds.':'Could not analyze this audio.'}}
+async function anFile(f){if(!f)return;show('an');if(f.size>200e6){$('#ans').textContent='This file is very large. Try a shorter bounce (under about 10 minutes).';return}$('#ans').textContent='Reading the file…';
+ try{const ab=await f.arrayBuffer(),meta=parseWav(ab),buf=await new Promise((ok,no)=>ctx().decodeAudioData(ab,ok,no));await runAn(buf,f.name.replace(/\.[^.]+$/,''),{meta,size:f.size,type:f.type,ext:(f.name.split('.').pop()||'').toLowerCase(),fname:f.name})}catch(x){$('#ans').textContent='This file could not be opened. Try a WAV, MP3, M4A or AIFF file.'}}
 $('#anf').onclick=()=>$('#anfi').click();
-$('#anfi').onchange=async e=>{const f=e.target.files[0];e.target.value='';if(!f)return;$('#ans').textContent='Reading the file…';try{const ab=await f.arrayBuffer(),buf=await new Promise((ok,no)=>ctx().decodeAudioData(ab,ok,no));await runAn(buf,f.name.replace(/\.[^.]+$/,''))}catch(x){$('#ans').textContent='This file could not be opened. Try an MP3, M4A or WAV file.'}};
+$('#andz').onclick=()=>$('#anfi').click();
+$('#anfi').onchange=e=>{const f=e.target.files[0];e.target.value='';anFile(f)};
+const isAud=f=>f&&(/^audio\//.test(f.type)||/\.(wav|wave|mp3|m4a|aac|aif|aiff|flac|ogg|caf)$/i.test(f.name));
+['dragenter','dragover'].forEach(ev=>document.addEventListener(ev,e=>{if(e.dataTransfer&&Array.from(e.dataTransfer.types||[]).includes('Files')){e.preventDefault();document.body.classList.add('drag')}}));
+document.addEventListener('dragleave',e=>{if(!e.relatedTarget)document.body.classList.remove('drag')});
+document.addEventListener('drop',e=>{e.preventDefault();document.body.classList.remove('drag');const f=e.dataTransfer&&e.dataTransfer.files&&e.dataTransfer.files[0];if(!f)return;if(isAud(f))anFile(f);else{show('an');$('#ans').textContent='That file is not audio. Drop a WAV, MP3, M4A or AIFF file.'}});
+document.addEventListener('keydown',e=>{const t=e.target,tg=t&&t.tagName;if(tg==='INPUT'||tg==='TEXTAREA'||tg==='SELECT'||e.metaKey||e.ctrlKey||e.altKey)return;const k=e.key;
+ if(k>='1'&&k<='5'){show(ORD[+k-1]);return}
+ if(curV==='me'){if(k===' '){e.preventDefault();toggleM()}else if(k==='ArrowRight')setBpm(bpm+(e.shiftKey?5:1));else if(k==='ArrowLeft')setBpm(bpm-(e.shiftKey?5:1));else if(k==='t'||k==='T')$('#tap').click()}
+ else if(curV==='mt'&&k===' '){e.preventDefault();$('#skp').click()}});
 $('#anm').onclick=async()=>{try{const a=ctx(),st=await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:false,noiseSuppression:false,autoGainControl:false}}),src=a.createMediaStreamSource(st),sp=a.createScriptProcessor(4096,1,1),ch=[];sp.onaudioprocess=ev=>ch.push(new Float32Array(ev.inputBuffer.getChannelData(0)));src.connect(sp);sp.connect(a.destination);
  let left=20;const iv=setInterval(()=>{$('#ans').textContent='Listening… '+left+' s';if(left--<=0){clearInterval(iv);sp.disconnect();src.disconnect();st.getTracks().forEach(t=>t.stop());const L=ch.length*4096,b=a.createBuffer(1,L,a.sampleRate),d=b.getChannelData(0);ch.forEach((c,i)=>d.set(c,i*4096));runAn(b,'Heard by mic')}},1000)}catch(e){$('#ans').textContent='Microphone is blocked. Allow it in Safari settings, then try again.'}};
 /* loop sketchpad */
